@@ -308,7 +308,7 @@ RSpec.describe Muren::Cookies do
       keys = []
       cookie_route('foo=bar') do
         enum = cookies.each
-        enum.each_key { |key| keys << key }
+        enum.each { |key, _| keys << key }
       end
       keys.each { |key| expect(key).to eq('foo') }
     end
@@ -398,7 +398,7 @@ RSpec.describe Muren::Cookies do
       keys = []
       cookie_route('foo=bar') do
         enum = cookies.each_pair
-        enum.each_key { |key| keys << key }
+        enum.each { |key, _| keys << key }
       end
       keys.each { |key| expect(key).to eq('foo') }
     end

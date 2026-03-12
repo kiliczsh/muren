@@ -147,9 +147,9 @@ module Muren
         to_hash.empty?
       end
 
-      def fetch(key, &block)
+      def fetch(key, *args, &block)
         response_cookies.fetch(key.to_s) do
-          request_cookies.fetch(key.to_s, &block)
+          request_cookies.fetch(key.to_s, *args, &block)
         end
       end
 
