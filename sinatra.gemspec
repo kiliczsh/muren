@@ -41,7 +41,7 @@ RubyGems 2.0 or newer is required to protect against public gem pushes. You can 
     'bug_tracker_uri' => 'https://github.com/sinatra/sinatra/issues',
     'mailing_list_uri' => 'http://groups.google.com/group/sinatrarb',
     'documentation_uri' => 'https://www.rubydoc.info/gems/sinatra',
-    'rubygems_mfa_required' => 'true',
+    'rubygems_mfa_required' => 'true'
   }
 
   s.required_ruby_version = '>= 2.7.8'

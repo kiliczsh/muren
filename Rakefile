@@ -68,7 +68,7 @@ task :add_template, [:name] do |_t, args|
       template = code[%r{===[^\n]*Liquid.*index\.liquid</tt>[^\n]*}m]
       if template
         puts "Adding section to #{file}"
-        template = template.gsub(/Liquid/, args.name.capitalize).gsub(/liquid/, args.name.downcase)
+        template = template.gsub('Liquid', args.name.capitalize).gsub('liquid', args.name.downcase)
         code.gsub! /^(\s*===.*CoffeeScript)/, "\n" << template << "\n\\1"
         File.open(file, 'w') { |f| f << code }
       else
@@ -163,7 +163,7 @@ if defined?(Gem)
   end
 
   namespace :package do
-    GEMS_AND_ROOT_DIRECTORIES.each do |gem, _directory|
+    GEMS_AND_ROOT_DIRECTORIES.each_key do |gem|
       desc "Build #{gem} packages"
       task gem => %w[.gem .tar.gz].map { |e| package(gem, e) }
     end
@@ -173,7 +173,7 @@ if defined?(Gem)
   end
 
   namespace :install do
-    GEMS_AND_ROOT_DIRECTORIES.each do |gem, _directory|
+    GEMS_AND_ROOT_DIRECTORIES.each_key do |gem|
       desc "Build and install #{gem} as local gem"
       task gem => package(gem, '.gem') do
         sh "gem install #{package(gem, '.gem')}"
@@ -185,7 +185,7 @@ if defined?(Gem)
   end
 
   namespace :release do
-    GEMS_AND_ROOT_DIRECTORIES.each do |gem, _directory|
+    GEMS_AND_ROOT_DIRECTORIES.each_key do |gem|
       desc "Release #{gem} as a package"
       task gem => "package:#{gem}" do
         sh <<-SH

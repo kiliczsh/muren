@@ -129,8 +129,8 @@ module Sinatra
         super || to_str.respond_to?(*args)
       end
 
-      def method_missing(*args, &block)
-        to_str.send(*args, &block)
+      def method_missing(...)
+        to_str.send(...)
       end
     end
 
@@ -324,7 +324,7 @@ module Sinatra
     # Generates the absolute URI for a given path in the app.
     # Takes Rack routers and reverse proxies into account.
     def uri(addr = nil, absolute = true, add_script_name = true)
-      return addr if addr.to_s =~ /\A[a-z][a-z0-9+.\-]*:/i
+      return addr if addr.to_s =~ /\A[a-z][a-z0-9+.-]*:/i
 
       uri = [host = String.new]
       if absolute
@@ -405,7 +405,7 @@ module Sinatra
 
     # https://html.spec.whatwg.org/#multipart-form-data
     MULTIPART_FORM_DATA_REPLACEMENT_TABLE = {
-      '"'  => '%22',
+      '"' => '%22',
       "\r" => '%0D',
       "\n" => '%0A'
     }.freeze
@@ -477,13 +477,11 @@ module Sinatra
       def each(&front)
         @front = front
         @scheduler.defer do
-          begin
-            @back.call(self)
-          rescue Exception => e
-            @scheduler.schedule { raise e }
-          ensure
-            close unless @keep_open
-          end
+          @back.call(self)
+        rescue Exception => e
+          @scheduler.schedule { raise e }
+        ensure
+          close unless @keep_open
         end
       end
 
@@ -513,15 +511,13 @@ module Sinatra
     def stream(keep_open = false)
       scheduler = env['async.callback'] ? EventMachine : Stream
       current   = @params.dup
-      stream = if scheduler == Stream  && keep_open
-        Stream.new(scheduler, false) do |out|
-          until out.closed?
-            with_params(current) { yield(out) }
-          end
-        end
-      else
-        Stream.new(scheduler, keep_open) { |out| with_params(current) { yield(out) } }
-      end
+      stream = if scheduler == Stream && keep_open
+                 Stream.new(scheduler, false) do |out|
+                   with_params(current) { yield(out) } until out.closed?
+                 end
+               else
+                 Stream.new(scheduler, keep_open) { |out| with_params(current) { yield(out) } }
+               end
       body stream
     end
 
@@ -1107,7 +1103,7 @@ module Sinatra
       force_encoding(params)
       @params = @params.merge(params) { |_k, v1, v2| v2 || v1 } if params.any?
 
-      regexp_exists = pattern.is_a?(Mustermann::Regular) || (pattern.respond_to?(:patterns) && pattern.patterns.any? { |subpattern| subpattern.is_a?(Mustermann::Regular) })
+      regexp_exists = pattern.is_a?(Mustermann::Regular) || (pattern.respond_to?(:patterns) && pattern.patterns.any?(Mustermann::Regular))
       if regexp_exists
         captures           = pattern.match(route).captures.map { |c| URI_INSTANCE.unescape(c) if c }
         values            += captures
@@ -1125,7 +1121,7 @@ module Sinatra
       raise
     ensure
       params ||= {}
-      params.each { |k, _| @params.delete(k) } unless @env['sinatra.error.params']
+      params.each_key { |k| @params.delete(k) } unless @env['sinatra.error.params']
     end
 
     # No matching route was found or all routes passed. The default
@@ -1273,7 +1269,7 @@ module Sinatra
     def dump_errors!(boom)
       if boom.respond_to?(:detailed_message)
         msg = boom.detailed_message(highlight: false)
-        if msg =~ /\A(.*?)(?: \(#{ Regexp.quote(boom.class.to_s) }\))?\n/
+        if msg =~ /\A(.*?)(?: \(#{Regexp.quote(boom.class.to_s)}\))?\n/
           msg = $1
           additional_msg = $'.lines(chomp: true)
         else
@@ -1292,7 +1288,7 @@ module Sinatra
         %r{/sinatra(/(base|main|show_exceptions))?\.rb$},   # all sinatra code
         %r{lib/tilt.*\.rb$},                                # all tilt code
         /^\(.*\)$/,                                         # generated code
-        /\/bundled_gems.rb$/,                               # ruby >= 3.3 with bundler >= 2.5
+        %r{/bundled_gems.rb$},                               # ruby >= 3.3 with bundler >= 2.5
         %r{rubygems/(custom|core_ext/kernel)_require\.rb$}, # rubygems require hacks
         /active_support/,                                   # active_support require hacks
         %r{bundler(/(?:runtime|inline))?\.rb},              # bundler require hacks
@@ -1424,7 +1420,7 @@ module Sinatra
       # Load embedded templates from the file; uses the caller's __FILE__
       # when no file is specified.
       def inline_templates=(file = nil)
-        file = (caller_files.first || File.expand_path($0)) if file.nil? || file == true
+        file = caller_files.first || File.expand_path($0) if file.nil? || file == true
 
         begin
           io = ::IO.respond_to?(:binread) ? ::IO.binread(file) : ::IO.read(file)
@@ -1566,6 +1562,7 @@ module Sinatra
         @extensions += extensions
         extensions.each do |extension|
           extend extension
+
           extension.registered(self) if extension.respond_to?(:registered)
         end
       end
@@ -1597,7 +1594,7 @@ module Sinatra
         set :running_server, nil
         set :handler_name, nil
 
-        on_stop_callback.call unless on_stop_callback.nil?
+        on_stop_callback&.call
       end
 
       alias stop! quit!
@@ -1659,8 +1656,8 @@ module Sinatra
       # Create a new instance of the class fronted by its middleware
       # pipeline. The object is guaranteed to respond to #call but may not be
       # an instance of the class new was called on.
-      def new(*args, &block)
-        instance = new!(*args, &block)
+      def new(*args, &block) # rubocop:disable Style/ArgumentsForwarding
+        instance = new!(*args, &block) # rubocop:disable Style/ArgumentsForwarding
         Wrapper.new(build(instance).to_app, instance)
       end
       ruby2_keywords :new if respond_to?(:ruby2_keywords, true)
@@ -1702,7 +1699,7 @@ module Sinatra
           set :running_server, server
           set :handler_name,   handler_name
           server.threaded = settings.threaded if server.respond_to? :threaded=
-          on_start_callback.call unless on_start_callback.nil?
+          on_start_callback&.call
           yield server if block_given?
         end
       end
@@ -1813,7 +1810,7 @@ module Sinatra
       end
 
       def compile(path, route_mustermann_opts = {})
-        Mustermann.new(path, **mustermann_opts.merge(route_mustermann_opts))
+        Mustermann.new(path, **mustermann_opts, **route_mustermann_opts)
       end
 
       def setup_default_middleware(builder)
@@ -1975,21 +1972,21 @@ module Sinatra
     set :bind, proc { development? ? 'localhost' : '0.0.0.0' }
     set :port, Integer(ENV['PORT'] && !ENV['PORT'].empty? ? ENV['PORT'] : 4567)
     set :quiet, false
-    set :host_authorization, ->() do
+    set :host_authorization, lambda {
       if development?
         {
           permitted_hosts: [
-            "localhost",
-            ".localhost",
-            ".test",
-            IPAddr.new("0.0.0.0/0"),
-            IPAddr.new("::/0"),
+            'localhost',
+            '.localhost',
+            '.test',
+            IPAddr.new('0.0.0.0/0'),
+            IPAddr.new('::/0')
           ]
         }
       else
         {}
       end
-    end
+    }
 
     ruby_engine = defined?(RUBY_ENGINE) && RUBY_ENGINE
 
@@ -2013,7 +2010,7 @@ module Sinatra
     set :public_folder, proc { root && File.join(root, 'public') }
     set :static, proc { public_folder && File.exist?(public_folder) }
     set :static_cache_control, false
-    
+
     set :static_headers, {}
 
     error ::Exception do
@@ -2091,7 +2088,7 @@ module Sinatra
     def self.register(*extensions, &block) # :nodoc:
       added_methods = extensions.flat_map(&:public_instance_methods)
       Delegator.delegate(*added_methods)
-      super(*extensions, &block)
+      super
     end
   end
 
@@ -2167,7 +2164,7 @@ module Sinatra
   end
 
   # Use the middleware for classic applications.
-  def self.use(*args, &block)
-    Delegator.target.use(*args, &block)
+  def self.use(...)
+    Delegator.target.use(...)
   end
 end

@@ -51,6 +51,6 @@ end
 # extend only extends the `main` object
 extend Sinatra::Delegator
 
-class Rack::Builder
+class Rack::Builder # rubocop:disable Style/OneClassPerFile
   include Sinatra::Delegator
 end

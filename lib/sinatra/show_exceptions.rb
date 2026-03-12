@@ -71,7 +71,7 @@ module Sinatra
       end
     end
 
-    TEMPLATE = ERB.new <<-HTML # :nodoc:
+    TEMPLATE = ERB.new <<-HTML # rubocop:disable Lint/UselessConstantScoping
 <!DOCTYPE html>
 <html>
 <head>

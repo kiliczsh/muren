@@ -46,7 +46,7 @@ module Sinatra
     def default(*args)
       args.map!(&method(:convert_key))
 
-      super(*args)
+      super
     end
 
     def default=(value)
@@ -107,19 +107,19 @@ module Sinatra
     def fetch_values(*keys)
       keys.map!(&method(:convert_key))
 
-      super(*keys)
+      super
     end
 
     def slice(*keys)
       keys.map!(&method(:convert_key))
 
-      self.class[super(*keys)]
+      self.class[super]
     end
 
     def values_at(*keys)
       keys.map!(&method(:convert_key))
 
-      super(*keys)
+      super
     end
 
     def merge!(*other_hashes)
@@ -166,27 +166,29 @@ module Sinatra
       super(&method(:convert_key))
     end
 
-    def select(*args, &block)
+    def select(...)
       return to_enum(:select) unless block_given?
 
-      dup.tap { |hash| hash.select!(*args, &block) }
+      dup.tap { |hash| hash.select!(...) }
     end
 
-    def reject(*args, &block)
+    def reject(...)
       return to_enum(:reject) unless block_given?
 
-      dup.tap { |hash| hash.reject!(*args, &block) }
+      dup.tap { |hash| hash.reject!(...) }
     end
 
     def compact
       dup.tap(&:compact!)
     end
 
-    def except(*keys)
-      keys.map!(&method(:convert_key))
+    if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.0')
+      def except(*keys)
+        keys.map!(&method(:convert_key))
 
-      self.class[super(*keys)]
-    end if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.0")
+        self.class[super]
+      end
+    end
 
     private
 

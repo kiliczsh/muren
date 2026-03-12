@@ -6,7 +6,8 @@ module Sinatra
   module Middleware
     class Logger
       def initialize(app, level = ::Logger::INFO)
-        @app, @level = app, level
+        @app = app
+        @level = level
       end
 
       def call(env)

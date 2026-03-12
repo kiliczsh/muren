@@ -21,7 +21,7 @@ get '/stream', provides: 'text/event-stream' do
     end
     out << "heartbeat:\n"
     sleep 1
-  rescue
+  rescue StandardError
     out.close
   end
 end
@@ -29,7 +29,7 @@ end
 post '/' do
   connections.each do |out|
     out << "data: #{params[:msg]}\n\n"
-  rescue
+  rescue StandardError
     out.close
   end
   204 # response without entity body

@@ -8,13 +8,13 @@ get('/') do
 end
 
 on_start do
-  puts "=============="
-  puts "  Booting up"
-  puts "=============="
+  puts '=============='
+  puts '  Booting up'
+  puts '=============='
 end
 
 on_stop do
-  puts "================="
-  puts "  Shutting down"
-  puts "================="
+  puts '================='
+  puts '  Shutting down'
+  puts '================='
 end
