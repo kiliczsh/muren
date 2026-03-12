@@ -1,5 +1,5 @@
 $stderr.puts "loading"
-require 'sinatra'
+require 'muren'
 
 configure do
   set :foo, :bar
@@ -61,7 +61,7 @@ get '/streaming' do
   end
 end
 
-class Subclass < Sinatra::Base
+class Subclass < Muren::Base
   set :out, nil
   get '/subclass/async' do
     stream(:keep_open) { |o| (settings.out = o) << "hi!"; sleep 1 }

@@ -43,7 +43,7 @@ class IntegrationTest < Minitest::Test
 
   it 'starts the correct server' do
     exp = %r{
-      ==\sSinatra\s\(v#{Sinatra::VERSION}\)\s
+      ==\sMuren\s\(v#{Muren::VERSION}\)\s
       has\staken\sthe\sstage\son\s\d+\sfor\sdevelopment\s
       with\sbackup\sfrom\s#{server}
     }ix

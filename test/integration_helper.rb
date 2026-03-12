@@ -1,10 +1,10 @@
-require 'sinatra/base'
+require 'muren/base'
 require 'rbconfig'
 require 'open-uri'
-require 'sinatra/runner'
+require 'muren/runner'
 
 module IntegrationHelper
-  class BaseServer < Sinatra::Runner
+  class BaseServer < Muren::Runner
     extend Enumerable
     attr_accessor :server, :port
     alias name server
@@ -99,7 +99,7 @@ module IntegrationHelper
     end
 
     def warnings
-      log.scan(%r[(?:\(eval|lib/sinatra).*warning:.*$])
+      log.scan(%r[(?:\(eval|lib/muren).*warning:.*$])
     end
 
     def run_test(target, &block)
@@ -127,7 +127,7 @@ module IntegrationHelper
     super
 
     base_port = 5000 + Process.pid % 100
-    servers = Sinatra::Base.server.dup
+    servers = Muren::Base.server.dup
 
     # TruffleRuby doesn't support `Fiber.set_scheduler` yet
     unsupported_truffleruby = RUBY_ENGINE == "truffleruby" && !Fiber.respond_to?(:set_scheduler)

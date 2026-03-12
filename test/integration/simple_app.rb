@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "sinatra"
+require "muren"
 
 get "/" do
   "OK"

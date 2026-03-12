@@ -1,10 +1,10 @@
-# Sinatra maintenance
+# Müren maintenance
 
 ## Versions
 
 ### Releases
 
-The next major version of Sinatra will be released from the main branch. Each version will be tagged so it will be possible to branch of should there be a need for bug fixes and other updates.
+The next major version of Müren will be released from the main branch. Each version will be tagged so it will be possible to branch of should there be a need for bug fixes and other updates.
 
 ## Issues
 

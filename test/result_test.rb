@@ -78,7 +78,7 @@ class ResultTest < Minitest::Test
     assert_equal '', body
   end
 
-  it "sets status to 500 when raised error is not Sinatra::Error" do
+  it "sets status to 500 when raised error is not Muren::Error" do
     mock_app do
       set :raise_errors, false
       get('/') { raise ThirdPartyError }

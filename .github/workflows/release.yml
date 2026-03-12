@@ -8,7 +8,7 @@ on:
 
 jobs:
   release:
-    if: github.repository == 'sinatra/sinatra'
+    if: github.repository == 'muren/muren'
     runs-on: ubuntu-latest
     permissions:
       id-token: write # for trusted publishing
@@ -21,9 +21,9 @@ jobs:
       - uses: rubygems/configure-rubygems-credentials@v1.0.0
       # ensure gems can be built and installed
       - run: bundle exec rake install:rack-protection
-      - run: bundle exec rake install:sinatra
-      - run: bundle exec rake install:sinatra-contrib
+      - run: bundle exec rake install:muren
+      - run: bundle exec rake install:muren-contrib
       # push gems to rubygems.org
       - run: bundle exec rake release:rack-protection
-      - run: bundle exec rake release:sinatra
-      - run: bundle exec rake release:sinatra-contrib
+      - run: bundle exec rake release:muren
+      - run: bundle exec rake release:muren-contrib

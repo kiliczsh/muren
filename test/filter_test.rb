@@ -109,7 +109,7 @@ class BeforeFilterTest < Minitest::Test
   end
 
   it "runs filters defined in superclasses" do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.before { @foo = 'hello from superclass' }
 
     mock_app(base) { get('/foo') { @foo } }
@@ -165,7 +165,7 @@ class BeforeFilterTest < Minitest::Test
         doodle = 'and runs'
       end
       error 500 do
-        "Error handled #{env['sinatra.error'].message}"
+        "Error handled #{env['muren.error'].message}"
       end
     end
 
@@ -249,7 +249,7 @@ class AfterFilterTest < Minitest::Test
 
   it "runs filters defined in superclasses" do
     count = 2
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.after { count *= 2 }
     mock_app(base) do
       get('/foo') do
@@ -263,7 +263,7 @@ class AfterFilterTest < Minitest::Test
   end
 
   it "respects content type set in superclass filter" do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.before { content_type :json }
     mock_app(base) do
       get('/foo'){ {foo: :bar}.to_json }
@@ -503,7 +503,7 @@ class AfterFilterTest < Minitest::Test
         doodle = 'Been now'
       end
       error 500 do
-        "Error handled #{env['sinatra.error'].message}"
+        "Error handled #{env['muren.error'].message}"
       end
     end
 

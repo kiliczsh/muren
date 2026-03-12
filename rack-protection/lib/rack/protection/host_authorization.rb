@@ -16,7 +16,7 @@ module Rack
     #
     # If you want to permit a specific hostname, you can pass in as the `:permitted_hosts` option:
     #
-    #     use Rack::Protection::HostAuthorization, permitted_hosts: ["www.example.org", "sinatrarb.com"]
+    #     use Rack::Protection::HostAuthorization, permitted_hosts: ["www.example.org", "murenrb.com"]
     #
     # The `:allow_if` option can also be set to a proc to use custom allow/deny logic.
     class HostAuthorization < Base

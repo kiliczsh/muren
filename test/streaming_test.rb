@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 
 class StreamingTest < Minitest::Test
-  Stream = Sinatra::Helpers::Stream
+  Stream = Muren::Helpers::Stream
 
   it 'returns the concatenated body' do
     mock_app do

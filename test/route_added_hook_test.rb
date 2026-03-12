@@ -17,7 +17,7 @@ class RouteAddedHookTest < Minitest::Test
   end
 
   it "should be notified of an added route" do
-    mock_app(Class.new(Sinatra::Base)) do
+    mock_app(Class.new(Muren::Base)) do
       register RouteAddedTest
       get('/') {}
     end
@@ -27,7 +27,7 @@ class RouteAddedHookTest < Minitest::Test
   end
 
   it "should include hooks from superclass" do
-    a = Class.new(Class.new(Sinatra::Base))
+    a = Class.new(Class.new(Muren::Base))
     b = Class.new(a)
 
     a.register RouteAddedTest
@@ -38,7 +38,7 @@ class RouteAddedHookTest < Minitest::Test
   end
 
   it "should only run once per extension" do
-    mock_app(Class.new(Sinatra::Base)) do
+    mock_app(Class.new(Muren::Base)) do
       register RouteAddedTest
       register RouteAddedTest
       get('/') {}
@@ -49,7 +49,7 @@ class RouteAddedHookTest < Minitest::Test
   end
 
   it "should pass route blocks as an argument" do
-    mock_app(Class.new(Sinatra::Base)) do
+    mock_app(Class.new(Muren::Base)) do
       register RouteAddedTest
       get('/') {}
     end

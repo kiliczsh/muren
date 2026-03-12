@@ -1,12 +1,12 @@
 require_relative 'test_helper'
 
 class BaseTest < Minitest::Test
-  describe 'Sinatra::Base subclasses' do
-    class TestApp < Sinatra::Base
+  describe 'Muren::Base subclasses' do
+    class TestApp < Muren::Base
       get('/') { 'Hello World' }
     end
 
-    class TestKeywordArgumentInitializerApp < Sinatra::Base
+    class TestKeywordArgumentInitializerApp < Muren::Base
       def initialize(argument:)
         @argument = argument
       end
@@ -27,7 +27,7 @@ class BaseTest < Minitest::Test
       assert_equal 'Hello World', response.body
     end
 
-    class TestApp < Sinatra::Base
+    class TestApp < Muren::Base
       get '/state' do
         @foo ||= "new"
         body = "Foo: #{@foo}"
@@ -68,31 +68,31 @@ class BaseTest < Minitest::Test
     end
   end
 
-  describe "Sinatra::Base#new" do
+  describe "Muren::Base#new" do
     it 'returns a wrapper' do
-      assert_equal Sinatra::Wrapper, Sinatra::Base.new.class
+      assert_equal Muren::Wrapper, Muren::Base.new.class
     end
 
     it 'implements a nice inspect' do
-      assert_equal '#<Sinatra::Base app_file=nil>', Sinatra::Base.new.inspect
+      assert_equal '#<Muren::Base app_file=nil>', Muren::Base.new.inspect
     end
 
     it 'exposes settings' do
-      assert_equal Sinatra::Base.settings, Sinatra::Base.new.settings
+      assert_equal Muren::Base.settings, Muren::Base.new.settings
     end
 
     it 'exposes helpers' do
-      assert_equal 'image/jpeg', Sinatra::Base.new.helpers.mime_type(:jpg)
+      assert_equal 'image/jpeg', Muren::Base.new.helpers.mime_type(:jpg)
     end
   end
 
-  describe "Sinatra::Base as Rack middleware" do
+  describe "Muren::Base as Rack middleware" do
     app = lambda { |env|
       headers = {'X-Downstream' => 'true'}
-      headers['X-Route-Missing'] = env['sinatra.route-missing'] || ''
+      headers['X-Route-Missing'] = env['muren.route-missing'] || ''
       [210, headers, ['Hello from downstream']] }
 
-    class TestMiddleware < Sinatra::Base
+    class TestMiddleware < Muren::Base
     end
 
     it 'creates a middleware that responds to #call with .new' do
@@ -105,9 +105,9 @@ class BaseTest < Minitest::Test
       assert_same app, middleware.app
     end
 
-    class TestMiddleware < Sinatra::Base
+    class TestMiddleware < Muren::Base
       def route_missing
-        env['sinatra.route-missing'] = '1'
+        env['muren.route-missing'] = '1'
         super
       end
 
@@ -134,7 +134,7 @@ class BaseTest < Minitest::Test
       assert_equal '1', response['X-Route-Missing']
     end
 
-    class TestMiddleware < Sinatra::Base
+    class TestMiddleware < Muren::Base
       get('/low-level-forward') { app.call(env) }
     end
 
@@ -145,7 +145,7 @@ class BaseTest < Minitest::Test
       assert_equal 'Hello from downstream', response.body
     end
 
-    class TestMiddleware < Sinatra::Base
+    class TestMiddleware < Muren::Base
       get '/explicit-forward' do
         response['X-Middleware'] = 'true'
         res = forward
@@ -168,7 +168,7 @@ class BaseTest < Minitest::Test
     app_content_length = lambda {|env|
       [200, {'Content-Length' => '16'}, 'From downstream!']}
 
-    class TestMiddlewareContentLength < Sinatra::Base
+    class TestMiddlewareContentLength < Muren::Base
       get '/forward' do
         'From after explicit forward!'
       end

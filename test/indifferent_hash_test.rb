@@ -4,42 +4,42 @@
 #
 require 'minitest/autorun' unless defined?(Minitest)
 
-require_relative '../lib/sinatra/indifferent_hash'
+require_relative '../lib/muren/indifferent_hash'
 
 class TestIndifferentHashBasics < Minitest::Test
   def test_flattened_constructor
-    hash = Sinatra::IndifferentHash[:a, 1, ?b, 2]
+    hash = Muren::IndifferentHash[:a, 1, ?b, 2]
     assert_equal 1, hash[?a]
     assert_equal 2, hash[?b]
   end
 
   def test_pairs_constructor
-    hash = Sinatra::IndifferentHash[[[:a, 1], [?b, 2]]]
+    hash = Muren::IndifferentHash[[[:a, 1], [?b, 2]]]
     assert_equal 1, hash[?a]
     assert_equal 2, hash[?b]
   end
 
   def test_default_block
-    hash = Sinatra::IndifferentHash.new { |h, k| h[k] = k.upcase }
+    hash = Muren::IndifferentHash.new { |h, k| h[k] = k.upcase }
     assert_nil hash.default
     assert_equal ?A, hash.default(:a)
   end
 
   def test_default_object
-    hash = Sinatra::IndifferentHash.new({:a=>1, ?b=>2})
+    hash = Muren::IndifferentHash.new({:a=>1, ?b=>2})
     assert_equal({ :a=>1, ?b=>2 }, hash.default)
     assert_equal({ :a=>1, ?b=>2 }, hash[:a])
   end
 
   def test_default_assignment
-    hash = Sinatra::IndifferentHash.new
+    hash = Muren::IndifferentHash.new
     hash.default = { :a=>1, ?b=>2 }
     assert_equal({ ?a=>1, ?b=>2 }, hash.default)
     assert_equal({ ?a=>1, ?b=>2 }, hash[:a])
   end
 
   def test_assignment
-    hash = Sinatra::IndifferentHash.new
+    hash = Muren::IndifferentHash.new
     hash[:a] = :a
     hash[?b] = :b
     hash[3] = 3
@@ -55,7 +55,7 @@ class TestIndifferentHashBasics < Minitest::Test
   def test_merge!
     # merge! is already mostly tested by the different constructors, so we
     # really just need to test the block form here
-    hash = Sinatra::IndifferentHash[:a=>'a', ?b=>'b', 3=>3]
+    hash = Muren::IndifferentHash[:a=>'a', ?b=>'b', 3=>3]
     hash.merge!(?a=>'A', :b=>'B', :d=>'D') do |key, oldval, newval|
       "#{oldval}*#{key}*#{newval}"
     end
@@ -66,7 +66,7 @@ end
 
 class TestIndifferentHash < Minitest::Test
   def setup
-    @hash = Sinatra::IndifferentHash[:a=>:a, ?b=>:b, 3=>3,
+    @hash = Muren::IndifferentHash[:a=>:a, ?b=>:b, 3=>3,
       :simple_nested=>{ :a=>:a, ?b=>:b },
       :nested=>{ :a=>[{ :a=>:a, ?b=>:b }, :c, 4], ?f=>:f, 7=>7 }
     ]
@@ -164,13 +164,13 @@ class TestIndifferentHash < Minitest::Test
   end
 
   def test_slice
-    assert_equal Sinatra::IndifferentHash[a: :a], @hash.slice(:a)
-    assert_equal Sinatra::IndifferentHash[b: :b], @hash.slice(?b)
-    assert_equal Sinatra::IndifferentHash[3 => 3], @hash.slice(3)
-    assert_equal Sinatra::IndifferentHash.new, @hash.slice(:d)
-    assert_equal Sinatra::IndifferentHash[a: :a, b: :b, 3 => 3], @hash.slice(:a, :b, 3)
-    assert_equal Sinatra::IndifferentHash[simple_nested: { a: :a, ?b => :b }], @hash.slice(:simple_nested)
-    assert_equal Sinatra::IndifferentHash[nested: { a: [{ a: :a, ?b => :b }, :c, 4], ?f => :f, 7 => 7 }], @hash.slice(:nested)
+    assert_equal Muren::IndifferentHash[a: :a], @hash.slice(:a)
+    assert_equal Muren::IndifferentHash[b: :b], @hash.slice(?b)
+    assert_equal Muren::IndifferentHash[3 => 3], @hash.slice(3)
+    assert_equal Muren::IndifferentHash.new, @hash.slice(:d)
+    assert_equal Muren::IndifferentHash[a: :a, b: :b, 3 => 3], @hash.slice(:a, :b, 3)
+    assert_equal Muren::IndifferentHash[simple_nested: { a: :a, ?b => :b }], @hash.slice(:simple_nested)
+    assert_equal Muren::IndifferentHash[nested: { a: [{ a: :a, ?b => :b }, :c, 4], ?f => :f, 7 => 7 }], @hash.slice(:nested)
   end
 
   def test_fetch_values
@@ -192,12 +192,12 @@ class TestIndifferentHash < Minitest::Test
   end
 
   def test_merge_with_multiple_argument
-    hash = Sinatra::IndifferentHash.new.merge({a: 1}, {b: 2}, {c: 3})
+    hash = Muren::IndifferentHash.new.merge({a: 1}, {b: 2}, {c: 3})
     assert_equal 1, hash[?a]
     assert_equal 2, hash[?b]
     assert_equal 3, hash[?c]
 
-    hash2 = Sinatra::IndifferentHash[d: 4]
+    hash2 = Muren::IndifferentHash[d: 4]
     hash3 = {e: 5}
     hash.merge!(hash2, hash3)
 
@@ -213,7 +213,7 @@ class TestIndifferentHash < Minitest::Test
   def test_transform_values!
     @hash.transform_values! { |v| v.is_a?(Hash) ? Hash[v.to_a] : v }
 
-    assert_instance_of Sinatra::IndifferentHash, @hash[:simple_nested]
+    assert_instance_of Muren::IndifferentHash, @hash[:simple_nested]
   end
 
   def test_transform_values
@@ -243,12 +243,12 @@ class TestIndifferentHash < Minitest::Test
 
   def test_select
     hash = @hash.select { |k, v| v == :a }
-    assert_equal Sinatra::IndifferentHash[a: :a], hash
-    assert_instance_of Sinatra::IndifferentHash, hash
+    assert_equal Muren::IndifferentHash[a: :a], hash
+    assert_instance_of Muren::IndifferentHash, hash
 
     hash2 = @hash.select { |k, v| true }
     assert_equal @hash, hash2
-    assert_instance_of Sinatra::IndifferentHash, hash2
+    assert_instance_of Muren::IndifferentHash, hash2
 
     enum = @hash.select
     assert_instance_of Enumerator, enum
@@ -256,17 +256,17 @@ class TestIndifferentHash < Minitest::Test
 
   def test_select!
     @hash.select! { |k, v| v == :a }
-    assert_equal Sinatra::IndifferentHash[a: :a], @hash
+    assert_equal Muren::IndifferentHash[a: :a], @hash
   end
 
   def test_reject
     hash = @hash.reject { |k, v| v != :a }
-    assert_equal Sinatra::IndifferentHash[a: :a], hash
-    assert_instance_of Sinatra::IndifferentHash, hash
+    assert_equal Muren::IndifferentHash[a: :a], hash
+    assert_instance_of Muren::IndifferentHash, hash
 
     hash2 = @hash.reject { |k, v| false }
     assert_equal @hash, hash2
-    assert_instance_of Sinatra::IndifferentHash, hash2
+    assert_instance_of Muren::IndifferentHash, hash2
 
     enum = @hash.reject
     assert_instance_of Enumerator, enum
@@ -274,27 +274,27 @@ class TestIndifferentHash < Minitest::Test
 
   def test_reject!
     @hash.reject! { |k, v| v != :a }
-    assert_equal Sinatra::IndifferentHash[a: :a], @hash
+    assert_equal Muren::IndifferentHash[a: :a], @hash
   end
 
   def test_compact
     hash_with_nil_values = @hash.merge({?z => nil})
     compacted_hash = hash_with_nil_values.compact
     assert_equal @hash, compacted_hash
-    assert_instance_of Sinatra::IndifferentHash, compacted_hash
+    assert_instance_of Muren::IndifferentHash, compacted_hash
 
-    empty_hash = Sinatra::IndifferentHash.new
+    empty_hash = Muren::IndifferentHash.new
     compacted_hash = empty_hash.compact
     assert_equal empty_hash, compacted_hash
 
-    non_empty_hash = Sinatra::IndifferentHash[a: :a]
+    non_empty_hash = Muren::IndifferentHash[a: :a]
     compacted_hash = non_empty_hash.compact
     assert_equal non_empty_hash, compacted_hash
   end
 
   def test_except
     hash = @hash.except(?b, 3, :simple_nested, 'nested')
-    assert_equal Sinatra::IndifferentHash[a: :a], hash
-    assert_instance_of Sinatra::IndifferentHash, hash
+    assert_equal Muren::IndifferentHash[a: :a], hash
+    assert_instance_of Muren::IndifferentHash, hash
   end if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.0")
 end

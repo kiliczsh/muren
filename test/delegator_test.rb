@@ -28,36 +28,36 @@ class DelegatorTest < Minitest::Test
   end
 
   setup do
-    @target_was = Sinatra::Delegator.target
+    @target_was = Muren::Delegator.target
   end
 
   def teardown
-    Sinatra::Delegator.target = @target_was
+    Muren::Delegator.target = @target_was
   end
 
   def delegation_app(&block)
-    mock_app { Sinatra::Delegator.target = self }
+    mock_app { Muren::Delegator.target = self }
     delegate(&block)
   end
 
   def mirror(&block)
     mirror = Mirror.new
-    Sinatra::Delegator.target = mirror
+    Muren::Delegator.target = mirror
     delegate(&block)
   end
 
   def delegate(&block)
-    assert Sinatra::Delegator.target != Sinatra::Application
-    Object.new.extend(Sinatra::Delegator).instance_eval(&block) if block
-    Sinatra::Delegator.target
+    assert Muren::Delegator.target != Muren::Application
+    Object.new.extend(Muren::Delegator).instance_eval(&block) if block
+    Muren::Delegator.target
   end
 
   def target
-    Sinatra::Delegator.target
+    Muren::Delegator.target
   end
 
-  it 'defaults to Sinatra::Application as target' do
-    assert_equal Sinatra::Application, Sinatra::Delegator.target
+  it 'defaults to Muren::Application as target' do
+    assert_equal Muren::Application, Muren::Delegator.target
   end
 
   %w[get put post delete options patch link unlink].each do |verb|
@@ -101,19 +101,19 @@ class DelegatorTest < Minitest::Test
 
   it "registers extensions with the delegation target" do
     app, mixin = mirror, Module.new
-    Sinatra.register mixin
+    Muren.register mixin
     assert_equal ["register", mixin.to_s], app.last_call
   end
 
   it "registers helpers with the delegation target" do
     app, mixin = mirror, Module.new
-    Sinatra.helpers mixin
+    Muren.helpers mixin
     assert_equal ["helpers", mixin.to_s], app.last_call
   end
 
   it "registers middleware with the delegation target" do
     app, mixin = mirror, Module.new
-    Sinatra.use mixin
+    Muren.use mixin
     assert_equal ["use", mixin.to_s], app.last_call
   end
 
@@ -139,7 +139,7 @@ class DelegatorTest < Minitest::Test
   end
 
   it "delegates crazy method names" do
-    Sinatra::Delegator.delegate "foo:bar:"
+    Muren::Delegator.delegate "foo:bar:"
     method = mirror { send "foo:bar:" }.last_call.first
     assert_equal "foo:bar:", method
   end

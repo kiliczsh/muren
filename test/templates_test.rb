@@ -14,8 +14,8 @@ class TestTemplate < Tilt::Template
 end
 
 class TemplatesTest < Minitest::Test
-  def render_app(base=Sinatra::Base, options = {}, &block)
-    base, options = Sinatra::Base, base if base.is_a? Hash
+  def render_app(base=Muren::Base, options = {}, &block)
+    base, options = Muren::Base, base if base.is_a? Hash
     mock_app(base) do
       set :views, __dir__ + '/views'
       set options
@@ -271,7 +271,7 @@ class TemplatesTest < Minitest::Test
   end
 
   it 'loads templates defined in subclasses' do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.template(:foo) { 'bar' }
     render_app(base) { render(:test, :foo) }
     assert ok?
@@ -308,7 +308,7 @@ class TemplatesTest < Minitest::Test
   end
 
   it 'uses templates in superclasses before subclasses' do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.template(:foo) { 'template in superclass' }
     assert_equal 'template in superclass', base.templates[:foo].first.call
 

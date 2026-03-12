@@ -30,7 +30,7 @@ Minitest::TestTask.create(:'test:core') do |t|
     base delegator encoding extensions filter
     helpers mapped_error middleware rdoc
     readme request response result route_added_hook
-    routing server settings sinatra static templates
+    routing server settings muren static templates
   ].map { |n| "test/#{n}_test.rb" }
 end
 
@@ -44,7 +44,7 @@ namespace :test do
     Rake::Task['test'].invoke
     Bundler.with_unbundled_env do
       sh 'cd rack-protection && COVERAGE=1 bundle exec rspec'
-      sh 'cd sinatra-contrib && COVERAGE=1 bundle exec rspec'
+      sh 'cd muren-contrib && COVERAGE=1 bundle exec rspec'
     end
   end
 end
@@ -123,7 +123,7 @@ task :toc, [:readme] do |_t, a|
     title.downcase.gsub(/(?!-)\W /, '-').gsub(' ', '-').gsub(/(?!-)\W/, '')
   end
 
-  puts '* [Sinatra](#sinatra)'
+  puts '* [Muren](#muren)'
   title = Regexp.new('(?<=\* )(.*)') # so Ruby 1.8 doesn't complain
   File.binread(a.readme).scan(/^##.*/) do |line|
     puts line.gsub(/#(?=#)/, '    ').gsub('#', '*').gsub(title) { "[#{$1}](##{link($1)})" }
@@ -134,8 +134,8 @@ end
 
 if defined?(Gem)
   GEMS_AND_ROOT_DIRECTORIES = {
-    'sinatra' => '.',
-    'sinatra-contrib' => './sinatra-contrib',
+    'muren' => '.',
+    'muren-contrib' => './muren-contrib',
     'rack-protection' => './rack-protection'
   }.freeze
 
@@ -198,8 +198,8 @@ if defined?(Gem)
     desc 'Commits the version to git (no push)'
     task :commit_version do
       %w[
-        lib/sinatra
-        sinatra-contrib/lib/sinatra/contrib
+        lib/muren
+        muren-contrib/lib/muren/contrib
         rack-protection/lib/rack/protection
       ].each do |path|
         path = File.join(path, 'version.rb')

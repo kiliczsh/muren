@@ -149,7 +149,7 @@ class RoutingTest < Minitest::Test
   it "overrides the content-type in error handlers" do
     mock_app {
       before { content_type 'text/plain' }
-      error Sinatra::NotFound do
+      error Muren::NotFound do
         content_type "text/html"
         "<h1>Not Found</h1>"
       end
@@ -165,7 +165,7 @@ class RoutingTest < Minitest::Test
     mock_app {
       get '/' do
         @response["Content-Length"] = "30"
-        raise Sinatra::NotFound
+        raise Muren::NotFound
       end
     }
 
@@ -177,7 +177,7 @@ class RoutingTest < Minitest::Test
   it "captures the exception message of a raised NotFound" do
     mock_app {
       get '/' do
-        raise Sinatra::NotFound, "This is not a drill"
+        raise Muren::NotFound, "This is not a drill"
       end
     }
 
@@ -190,7 +190,7 @@ class RoutingTest < Minitest::Test
   it "captures the exception message of a raised BadRequest" do
     mock_app {
       get '/' do
-        raise Sinatra::BadRequest, "This is not a drill either"
+        raise Muren::BadRequest, "This is not a drill either"
       end
     }
 
@@ -204,7 +204,7 @@ class RoutingTest < Minitest::Test
     mock_app {
       get('/') {}
 
-      error Sinatra::BadRequest do
+      error Muren::BadRequest do
         'This is not a drill either'
       end
     }
@@ -256,7 +256,7 @@ class RoutingTest < Minitest::Test
     assert ok?
     assert_equal 'worked', body
   rescue Rack::Lint::LintError => error
-    # Temporary fix for https://github.com/sinatra/sinatra/issues/2113
+    # Temporary fix for https://github.com/muren/muren/issues/2113
     skip error.message
   end
 
@@ -277,7 +277,7 @@ class RoutingTest < Minitest::Test
     assert ok?
     assert_equal 'worked', body
   rescue Rack::Lint::LintError => error
-    # Temporary fix for https://github.com/sinatra/sinatra/issues/2113
+    # Temporary fix for https://github.com/muren/muren/issues/2113
     skip error.message
   end
 
@@ -905,7 +905,7 @@ class RoutingTest < Minitest::Test
   end
 
   it "uses optional block passed to pass as route block if no other route is found and superclass has non-matching routes" do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.get('/foo') { 'foo in baseclass' }
 
     mock_app(base) {
@@ -1131,7 +1131,7 @@ class RoutingTest < Minitest::Test
       application/x-pkcs7-signature
     )
 
-    mime_types.each { |mime_type| assert mime_type.match(Sinatra::Request::HEADER_VALUE_WITH_PARAMS) }
+    mime_types.each { |mime_type| assert mime_type.match(Muren::Request::HEADER_VALUE_WITH_PARAMS) }
   end
 
   it "filters by accept header" do
@@ -1566,7 +1566,7 @@ class RoutingTest < Minitest::Test
   end
 
   it "matches routes defined in superclasses" do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.get('/foo') { 'foo in baseclass' }
 
     mock_app(base) {
@@ -1583,7 +1583,7 @@ class RoutingTest < Minitest::Test
   end
 
   it "matches routes in subclasses before superclasses" do
-    base = Class.new(Sinatra::Base)
+    base = Class.new(Muren::Base)
     base.get('/foo') { 'foo in baseclass' }
     base.get('/bar') { 'bar in baseclass' }
 
@@ -1629,8 +1629,8 @@ class RoutingTest < Minitest::Test
   end
 
   it 'plays well with other routing middleware' do
-    middleware = Sinatra.new
-    inner_app  = Sinatra.new { get('/foo') { 'hello' } }
+    middleware = Muren.new
+    inner_app  = Muren.new { get('/foo') { 'hello' } }
     builder    = Rack::Builder.new do
       use middleware
       map('/test') { run inner_app }
@@ -1655,10 +1655,10 @@ class RoutingTest < Minitest::Test
     assert list.include?(signature)
   end
 
-  it "sets env['sinatra.route'] to the matched route" do
+  it "sets env['muren.route'] to the matched route" do
     mock_app do
       after do
-        assert_equal 'GET /users/:id/status', env['sinatra.route']
+        assert_equal 'GET /users/:id/status', env['muren.route']
       end
       get('/users/:id/status') { 'ok' }
     end

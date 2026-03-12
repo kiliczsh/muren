@@ -15,7 +15,7 @@ AllCops:
   Exclude:
     - 'test/**/*'
     - 'rack-protection/**/*'
-    - 'sinatra-contrib/**/*'
+    - 'muren-contrib/**/*'
     - vendor/bundle/**/*
 
 Layout/ExtraSpacing:

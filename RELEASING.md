@@ -1,20 +1,20 @@
-# Releasing Sinatra 🥂
+# Releasing Müren 🥂
 
-This document explains releasing process for all Sinatra gems.
+This document explains releasing process for all Müren gems.
 
 Since everything is bundled in same repo (except `Mustermann`), we
 have some rake tasks and a GitHub Actions workflow to cut a release.
 
-(Please refer to [Mustermann](https://github.com/sinatra/mustermann) if that also needs a release.)
+(Please refer to [Mustermann](https://github.com/muren/mustermann) if that also needs a release.)
 
 ### Releasing
 
-For releasing new version of [`sinatra`, `sinatra-contrib`, `rack-protection`], this is the procedure:
+For releasing new version of [`muren`, `muren-contrib`, `rack-protection`], this is the procedure:
 
 1. Update `CHANGELOG.md`
 1. Update `VERSION` file with target version
 1. Run `rake release:commit_version`
-1. Create pull request with all that ([example](https://github.com/sinatra/sinatra/pull/1893))
+1. Create pull request with all that ([example](https://github.com/muren/muren/pull/1893))
 1. Merge the pull request when CI is green
 1. Ensure you have latest changes locally
 1. Run `rake release:tag_version`
@@ -26,14 +26,14 @@ These rake tasks will generate `.gem` and `.tar.gz` files. For each gem,
 there is one dedicated rake task.
 
 ```sh
-# Build sinatra-contrib package
-$ bundle exec rake package:sinatra-contrib
+# Build muren-contrib package
+$ bundle exec rake package:muren-contrib
 
 # Build rack-protection package
 $ bundle exec rake package:rack-protection
 
-# Build sinatra package
-$ bundle exec rake package:sinatra
+# Build muren package
+$ bundle exec rake package:muren
 
 # Build all packages
 $ bundle exec rake package:all
@@ -43,14 +43,14 @@ $ bundle exec rake package:all
 These rake tasks will package all the gems, and install them locally
 
 ```sh
-# Build and install sinatra-contrib gem locally
-$ bundle exec rake install:sinatra-contrib
+# Build and install muren-contrib gem locally
+$ bundle exec rake install:muren-contrib
 
 # Build and install rack-protection gem locally
 $ bundle exec rake install:rack-protection
 
-# Build and install sinatra gem locally
-$ bundle exec rake install:sinatra
+# Build and install muren gem locally
+$ bundle exec rake install:muren
 
 # Build and install all gems locally
 $ bundle exec rake install:all

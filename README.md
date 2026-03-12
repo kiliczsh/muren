@@ -1,14 +1,14 @@
-# Sinatra
+# Müren
 
-[![Gem Version](https://badge.fury.io/rb/sinatra.svg)](https://badge.fury.io/rb/sinatra)
-[![Testing](https://github.com/sinatra/sinatra/actions/workflows/test.yml/badge.svg)](https://github.com/sinatra/sinatra/actions/workflows/test.yml)
+[![Gem Version](https://badge.fury.io/rb/muren.svg)](https://badge.fury.io/rb/muren)
+[![Testing](https://github.com/muren/muren/actions/workflows/test.yml/badge.svg)](https://github.com/muren/muren/actions/workflows/test.yml)
 
-Sinatra is a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for
+Müren is a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for
 quickly creating web applications in Ruby with minimal effort:
 
 ```ruby
 # myapp.rb
-require 'sinatra'
+require 'muren'
 
 get '/' do
   'Hello world!'
@@ -18,7 +18,7 @@ end
 Install the gems needed:
 
 ```shell
-gem install sinatra rackup puma
+gem install muren rackup puma
 ```
 
 And run with:
@@ -36,7 +36,7 @@ like [rerun](https://github.com/alexch/rerun) or
 
 ## Table of Contents
 
-- [Sinatra](#sinatra)
+- [Müren](#muren)
   - [Table of Contents](#table-of-contents)
   - [Routes](#routes)
   - [Conditions](#conditions)
@@ -98,12 +98,12 @@ like [rerun](https://github.com/alexch/rerun) or
     - [Error](#error)
   - [Rack Middleware](#rack-middleware)
   - [Testing](#testing)
-  - [Sinatra::Base - Middleware, Libraries, and Modular Apps](#sinatrabase---middleware-libraries-and-modular-apps)
+  - [Müren::Base - Middleware, Libraries, and Modular Apps](#murenbase---middleware-libraries-and-modular-apps)
     - [Modular vs. Classic Style](#modular-vs-classic-style)
     - [Serving a Modular Application](#serving-a-modular-application)
     - [Using a Classic Style Application with a config.ru](#using-a-classic-style-application-with-a-configru)
     - [When to use a config.ru?](#when-to-use-a-configru)
-    - [Using Sinatra as Middleware](#using-sinatra-as-middleware)
+    - [Using Müren as Middleware](#using-muren-as-middleware)
     - [Dynamic Application Creation](#dynamic-application-creation)
   - [Scopes and Binding](#scopes-and-binding)
     - [Application/Class Scope](#applicationclass-scope)
@@ -119,7 +119,7 @@ like [rerun](https://github.com/alexch/rerun) or
 
 ## Routes
 
-In Sinatra, a route is an HTTP method paired with a URL-matching pattern.
+In Müren, a route is an HTTP method paired with a URL-matching pattern.
 Each route is associated with a block:
 
 ```ruby
@@ -252,7 +252,7 @@ By the way, unless you disable the path traversal attack protection (see
 [below](#configuring-attack-protection)), the request path might be modified before
 matching against your routes.
 
-You may customize the [Mustermann](https://github.com/sinatra/mustermann#readme)
+You may customize the [Mustermann](https://github.com/muren/mustermann#readme)
 options used for a given route by passing in a `:mustermann_opts` hash:
 
 ```ruby
@@ -366,7 +366,7 @@ boilerplate and embed the streaming logic in the route.
 
 ## Custom Route Matchers
 
-As shown above, Sinatra ships with built-in support for using String
+As shown above, Müren ships with built-in support for using String
 patterns and regular expressions as route matches. However, it does not
 stop there. You can easily define your own matchers:
 
@@ -420,12 +420,12 @@ Note that the public directory name is not included in the URL. A file
 Use the `:static_cache_control` setting (see [below](#cache-control)) to add
 `Cache-Control` header info.
 
-By default, Sinatra serves static files from the `public/` folder without running middleware or filters. To add custom headers (e.g, for CORS or caching), use the `:static_headers` setting:
+By default, Müren serves static files from the `public/` folder without running middleware or filters. To add custom headers (e.g, for CORS or caching), use the `:static_headers` setting:
 
 ```ruby
   set :static_headers, {
     'access-control-allow-origin' => '*',
-    'x-static-asset' => 'served-by-sinatra'
+    'x-static-asset' => 'served-by-muren'
   }
 ```
 
@@ -463,7 +463,7 @@ end
 This will render `views/index.erb` embedded in the
 `views/post.erb` (default is `views/layout.erb`, if it exists).
 
-Any options not understood by Sinatra will be passed on to the template
+Any options not understood by Müren will be passed on to the template
 engine:
 
 ```ruby
@@ -969,7 +969,7 @@ Currently, the following rendering methods accept a block: `erb`, `haml`,
 Templates may be defined at the end of the source file:
 
 ```ruby
-require 'sinatra'
+require 'muren'
 
 get '/' do
   haml :index
@@ -985,7 +985,7 @@ __END__
 %div.title Hello world.
 ```
 
-NOTE: Inline templates defined in the source file that requires Sinatra are
+NOTE: Inline templates defined in the source file that requires Müren are
 automatically loaded. Call `enable :inline_templates` explicitly if you
 have inline templates in other source files.
 
@@ -1185,8 +1185,8 @@ random number generator to create it. Humans are extremely bad at generating
 random values.
 
 By default, a 32 byte secure random session secret is generated for you by
-Sinatra, but it will change with every restart of your application. If you
-have multiple instances of your application, and you let Sinatra generate the
+Müren, but it will change with every restart of your application. If you
+have multiple instances of your application, and you let Müren generate the
 key, each instance would then have a different session key which is probably
 not what you want.
 
@@ -1206,7 +1206,7 @@ $ ruby -e "require 'securerandom'; puts SecureRandom.hex(64)"
 
 **Session Secret Environment Variable**
 
-Set a `SESSION_SECRET` environment variable for Sinatra to the value you
+Set a `SESSION_SECRET` environment variable for Müren to the value you
 generated. Make this value persistent across reboots of your host. Since the
 method for doing this will vary across systems this is for illustrative
 purposes only:
@@ -1428,7 +1428,7 @@ If the optional parameter is set to `keep_open`, it will not call `close` on
 the stream object, allowing you to close it at any later point in the
 execution flow.
 
-You can have a look at the [chat example](https://github.com/sinatra/sinatra/blob/main/examples/chat.rb)
+You can have a look at the [chat example](https://github.com/muren/muren/blob/main/examples/chat.rb)
 
 It's also possible for the client to close the connection when trying to
 write to the socket. Because of this, it's recommended to check
@@ -1449,11 +1449,11 @@ This logger will automatically take your Rack handler's logging settings into
 account. If logging is disabled, this method will return a dummy object, so
 you do not have to worry about it in your routes and filters.
 
-Note that logging is only enabled for `Sinatra::Application` by default, so
-if you inherit from `Sinatra::Base`, you probably want to enable it yourself:
+Note that logging is only enabled for `Müren::Application` by default, so
+if you inherit from `Müren::Base`, you probably want to enable it yourself:
 
 ```ruby
-class MyApp < Sinatra::Base
+class MyApp < Müren::Base
   configure :production, :development do
     enable :logging
   end
@@ -1462,12 +1462,12 @@ end
 
 To avoid any logging middleware to be set up, set the `logging` option to
 `nil`. However, keep in mind that `logger` will in that case return `nil`. A
-common use case is when you want to set your own logger. Sinatra will use
+common use case is when you want to set your own logger. Müren will use
 whatever it will find in `env['rack.logger']`.
 
 ### Mime Types
 
-When using `send_file` or static files you may have mime types Sinatra
+When using `send_file` or static files you may have mime types Müren
 doesn't understand. Use `mime_type` to register them by file extension:
 
 ```ruby
@@ -1608,7 +1608,7 @@ reverse-proxy caching solution, try
 
 ```ruby
 require "rack/cache"
-require "sinatra"
+require "muren"
 
 use Rack::Cache
 
@@ -1624,7 +1624,7 @@ Use the `:static_cache_control` setting (see [below](#cache-control)) to add
 
 According to RFC 2616, your application should behave differently if the
 If-Match or If-None-Match header is set to `*`, depending on whether the
-resource requested is already in existence. Sinatra assumes resources for
+resource requested is already in existence. Müren assumes resources for
 safe (like get) and idempotent (like put) requests are already in existence,
 whereas other resources (for instance post requests) are treated as new
 resources. You can change this behavior by passing in a `:new_resource`
@@ -1688,7 +1688,7 @@ The options are:
       Status code to be sent. Useful when sending a static file as an error
       page. If supported by the Rack handler, other means than streaming
       from the Ruby process will be used. If you use this helper method,
-      Sinatra will automatically handle range requests.
+      Müren will automatically handle range requests.
     </dd>
 </dl>
 
@@ -1773,7 +1773,7 @@ end
 
 ### Dealing with Date and Time
 
-Sinatra offers a `time_for` helper method that generates a Time object from
+Müren offers a `time_for` helper method that generates a Time object from
 the given value. It is also able to convert `DateTime`, `Date` and similar
 classes:
 
@@ -1909,8 +1909,8 @@ end
 
 ### Configuring attack protection
 
-Sinatra is using
-[Rack::Protection](https://github.com/sinatra/sinatra/tree/main/rack-protection#readme) to
+Müren is using
+[Rack::Protection](https://github.com/muren/muren/tree/main/rack-protection#readme) to
 defend your application against common, opportunistic attacks. You can
 easily disable this behavior (which will open up your application to tons
 of common vulnerabilities):
@@ -1930,9 +1930,9 @@ You can also hand in an array in order to disable a list of protections:
 set :protection, :except => [:path_traversal, :remote_token]
 ```
 
-By default, Sinatra will only set up session based protection if `:sessions`
+By default, Müren will only set up session based protection if `:sessions`
 have been enabled. See '[Using Sessions](#using-sessions)'. Sometimes you may want to set up
-sessions "outside" of the Sinatra app, such as in the config.ru or with a
+sessions "outside" of the Müren app, such as in the config.ru or with a
 separate `Rack::Builder` instance. In that case, you can still set up session
 based protection by passing the `:session` option:
 
@@ -1945,7 +1945,7 @@ set :protection, :session => true
 <dl>
   <dt>absolute_redirects</dt>
     <dd>
-      If disabled, Sinatra will allow relative redirects, however, Sinatra
+      If disabled, Müren will allow relative redirects, however, Müren
       will no longer conform with RFC 2616 (HTTP 1.1), which only allows
       absolute redirects.
     </dd>
@@ -2075,7 +2075,7 @@ set :protection, :session => true
 
   <dt>quiet</dt>
     <dd>
-      Disables logs generated by Sinatra's start and stop commands.
+      Disables logs generated by Müren's start and stop commands.
       <tt>false</tt> by default.
     </dd>
 
@@ -2103,7 +2103,7 @@ set :protection, :session => true
 
   <dt>run</dt>
     <dd>
-      If enabled, Sinatra will handle starting the web server. Do not
+      If enabled, Müren will handle starting the web server. Do not
       enable if using rackup or other means.
     </dd>
 
@@ -2148,7 +2148,7 @@ set :protection, :session => true
     </dd>
 
   <dt>static</dt>
-    <dd>Whether Sinatra should handle serving static files.</dd>
+    <dd>Whether Müren should handle serving static files.</dd>
     <dd>Disable when using a server able to do this on its own.</dd>
     <dd>Disabling will boost performance.</dd>
     <dd>
@@ -2157,7 +2157,7 @@ set :protection, :session => true
 
   <dt>static_cache_control</dt>
     <dd>
-      When Sinatra is serving static files, set this to add
+      When Müren is serving static files, set this to add
       <tt>Cache-Control</tt> headers to the responses. Uses the
       <tt>cache_control</tt> helper. Disabled by default.
     </dd>
@@ -2172,7 +2172,7 @@ set :protection, :session => true
     </dd>
     <dd>
       For example: <br>
-      <tt>set :static_headers, {'access-control-allow-origin' => '*', 'x-static-asset' => 'served-by-sinatra'}</tt>
+      <tt>set :static_headers, {'access-control-allow-origin' => '*', 'x-static-asset' => 'served-by-muren'}</tt>
     </dd>
 
 
@@ -2183,7 +2183,7 @@ set :protection, :session => true
     </dd>
 
   <dt>traps</dt>
-    <dd>Whether Sinatra should handle system signals.</dd>
+    <dd>Whether Müren should handle system signals.</dd>
 
   <dt>views</dt>
     <dd>
@@ -2200,7 +2200,7 @@ set :protection, :session => true
 
 ## Lifecycle Events
 
-There are 2 lifecycle events currently exposed by Sinatra. One when the server starts and one when it stops.
+There are 2 lifecycle events currently exposed by Müren. One when the server starts and one when it stops.
 
 They can be used like this:
 
@@ -2214,7 +2214,7 @@ on_stop do
 end
 ```
 
-Note that these callbacks only work when using Sinatra to start the web server.
+Note that these callbacks only work when using Müren to start the web server.
 
 ## Environments
 
@@ -2253,7 +2253,7 @@ which means you get all the goodies it has to offer, like `haml`, `erb`,
 
 ### Not Found
 
-When a `Sinatra::NotFound` exception is raised, or the response's status
+When a `Müren::NotFound` exception is raised, or the response's status
 code is 404, the `not_found` handler is invoked:
 
 ```ruby
@@ -2280,11 +2280,11 @@ error do
 end
 ```
 
-The exception object can be obtained from the `sinatra.error` Rack variable:
+The exception object can be obtained from the `muren.error` Rack variable:
 
 ```ruby
 error do
-  'Sorry there was a nasty error - ' + env['sinatra.error'].message
+  'Sorry there was a nasty error - ' + env['muren.error'].message
 end
 ```
 
@@ -2292,7 +2292,7 @@ Pass an error class as an argument to create handlers for custom errors:
 
 ```ruby
 error MyCustomError do
-  'So what happened was...' + env['sinatra.error'].message
+  'So what happened was...' + env['muren.error'].message
 end
 ```
 
@@ -2330,7 +2330,7 @@ error 400..510 do
 end
 ```
 
-Sinatra installs special `not_found` and `error` handlers when
+Müren installs special `not_found` and `error` handlers when
 running under the development environment to display nice stack traces
 and additional debugging information in your browser.
 
@@ -2381,18 +2381,18 @@ means that in order to write a test for a catch-all error handler,
 
 ## Rack Middleware
 
-Sinatra rides on [Rack](https://rack.github.io/), a minimal standard
+Müren rides on [Rack](https://rack.github.io/), a minimal standard
 interface for Ruby web frameworks. One of Rack's most interesting
 capabilities for application developers is support for "middleware" --
 components that sit between the server and your application monitoring
 and/or manipulating the HTTP request/response to provide various types
 of common functionality.
 
-Sinatra makes building Rack middleware pipelines a cinch via a top-level
+Müren makes building Rack middleware pipelines a cinch via a top-level
 `use` method:
 
 ```ruby
-require 'sinatra'
+require 'muren'
 require 'my_custom_middleware'
 
 use Rack::Lint
@@ -2415,7 +2415,7 @@ end
 ```
 
 Rack is distributed with a variety of standard middleware for logging,
-debugging, URL routing, authentication, and session handling. Sinatra uses
+debugging, URL routing, authentication, and session handling. Müren uses
 many of these components automatically based on configuration so you
 typically don't have to `use` them explicitly.
 
@@ -2426,13 +2426,13 @@ or in the [Rack wiki](https://github.com/rack/rack/wiki/List-of-Middleware).
 
 ## Testing
 
-Sinatra tests can be written using any Rack-based testing library or
+Müren tests can be written using any Rack-based testing library or
 framework.
 [Rack::Test](https://www.rubydoc.info/github/rack/rack-test/main/frames)
 is recommended:
 
 ```ruby
-require 'my_sinatra_app'
+require 'my_muren_app'
 require 'minitest/autorun'
 require 'rack/test'
 
@@ -2440,7 +2440,7 @@ class MyAppTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    Müren::Application
   end
 
   def test_my_default
@@ -2460,23 +2460,23 @@ class MyAppTest < Minitest::Test
 end
 ```
 
-Note: If you are using Sinatra in the modular style, replace
-`Sinatra::Application` above with the class name of your app.
+Note: If you are using Müren in the modular style, replace
+`Müren::Application` above with the class name of your app.
 
-## Sinatra::Base - Middleware, Libraries, and Modular Apps
+## Müren::Base - Middleware, Libraries, and Modular Apps
 
 Defining your app at the top-level works well for micro-apps but has
 considerable drawbacks when building reusable components such as Rack
 middleware, Rails metal, simple libraries with a server component, or even
-Sinatra extensions. The top-level assumes a micro-app style configuration
+Müren extensions. The top-level assumes a micro-app style configuration
 (e.g., a single application file, `./public` and `./views`
 directories, logging, exception detail page, etc.). That's where
-`Sinatra::Base` comes into play:
+`Müren::Base` comes into play:
 
 ```ruby
-require 'sinatra/base'
+require 'muren/base'
 
-class MyApp < Sinatra::Base
+class MyApp < Müren::Base
   set :sessions, true
   set :foo, 'bar'
 
@@ -2486,27 +2486,27 @@ class MyApp < Sinatra::Base
 end
 ```
 
-The methods available to `Sinatra::Base` subclasses are exactly the same
+The methods available to `Müren::Base` subclasses are exactly the same
 as those available via the top-level DSL. Most top-level apps can be
-converted to `Sinatra::Base` components with two modifications:
+converted to `Müren::Base` components with two modifications:
 
-* Your file should require `sinatra/base` instead of `sinatra`;
-  otherwise, all of Sinatra's DSL methods are imported into the main
+* Your file should require `muren/base` instead of `muren`;
+  otherwise, all of Müren's DSL methods are imported into the main
   namespace.
 * Put your app's routes, error handlers, filters, and options in a subclass
-  of `Sinatra::Base`.
+  of `Müren::Base`.
 
-`Sinatra::Base` is a blank slate. Most options are disabled by default,
+`Müren::Base` is a blank slate. Most options are disabled by default,
 including the built-in server. See [Configuring
-Settings](http://www.sinatrarb.com/configuration.html) for details on
+Settings](http://www.murenrb.com/configuration.html) for details on
 available options and their behavior. If you want behavior more similar
 to when you define your app at the top level (also known as Classic
-style), you can subclass `Sinatra::Application`:
+style), you can subclass `Müren::Application`:
 
 ```ruby
-require 'sinatra/base'
+require 'muren/base'
 
-class MyApp < Sinatra::Application
+class MyApp < Müren::Application
   get '/' do
     'Hello world!'
   end
@@ -2520,7 +2520,7 @@ style. If it suits your application, you do not have to switch to a
 modular application.
 
 The main disadvantage of using the classic style rather than the modular
-style is that you will only have one Sinatra application per Ruby
+style is that you will only have one Müren application per Ruby
 process. If you plan to use more than one, switch to the modular style.
 There is no reason you cannot mix the modular and classic styles.
 
@@ -2537,9 +2537,9 @@ slightly different default settings:
 
   <tr>
     <td>app_file</td>
-    <td>file loading sinatra</td>
-    <td>file subclassing Sinatra::Base</td>
-    <td>file subclassing Sinatra::Application</td>
+    <td>file loading muren</td>
+    <td>file subclassing Müren::Base</td>
+    <td>file subclassing Müren::Application</td>
   </tr>
 
   <tr>
@@ -2585,9 +2585,9 @@ starting with `run!`:
 
 ```ruby
 # my_app.rb
-require 'sinatra/base'
+require 'muren/base'
 
-class MyApp < Sinatra::Base
+class MyApp < Müren::Base
   # ... app code here ...
 
   # start the server if ruby file executed directly
@@ -2621,7 +2621,7 @@ Write your app file:
 
 ```ruby
 # app.rb
-require 'sinatra'
+require 'muren'
 
 get '/' do
   'Hello world!'
@@ -2632,7 +2632,7 @@ And a corresponding `config.ru`:
 
 ```ruby
 require './app'
-run Sinatra::Application
+run Müren::Application
 ```
 
 ### When to use a config.ru?
@@ -2641,24 +2641,24 @@ A `config.ru` file is recommended if:
 
 * You want to deploy with a different Rack handler (Passenger, Unicorn,
   Heroku, ...).
-* You want to use more than one subclass of `Sinatra::Base`.
-* You want to use Sinatra only for middleware, and not as an endpoint.
+* You want to use more than one subclass of `Müren::Base`.
+* You want to use Müren only for middleware, and not as an endpoint.
 
 **There is no need to switch to a `config.ru` simply because you
 switched to the modular style, and you don't have to use the modular
 style for running with a `config.ru`.**
 
-### Using Sinatra as Middleware
+### Using Müren as Middleware
 
-Not only is Sinatra able to use other Rack middleware, any Sinatra
+Not only is Müren able to use other Rack middleware, any Müren
 application can, in turn, be added in front of any Rack endpoint as
-middleware itself. This endpoint could be another Sinatra application,
+middleware itself. This endpoint could be another Müren application,
 or any other Rack-based application (Rails/Hanami/Roda/...):
 
 ```ruby
-require 'sinatra/base'
+require 'muren/base'
 
-class LoginScreen < Sinatra::Base
+class LoginScreen < Müren::Base
   enable :sessions
 
   get('/login') { haml :login }
@@ -2672,7 +2672,7 @@ class LoginScreen < Sinatra::Base
   end
 end
 
-class MyApp < Sinatra::Base
+class MyApp < Müren::Base
   # middleware will run before filters
   use LoginScreen
 
@@ -2689,11 +2689,11 @@ end
 ### Dynamic Application Creation
 
 Sometimes you want to create new applications at runtime without having to
-assign them to a constant. You can do this with `Sinatra.new`:
+assign them to a constant. You can do this with `Müren.new`:
 
 ```ruby
-require 'sinatra/base'
-my_app = Sinatra.new { get('/') { "hi" } }
+require 'muren/base'
+my_app = Müren.new { get('/') { "hi" } }
 my_app.run!
 ```
 
@@ -2701,31 +2701,31 @@ It takes the application to inherit from as an optional argument:
 
 ```ruby
 # config.ru (run with rackup)
-require 'sinatra/base'
+require 'muren/base'
 
-controller = Sinatra.new do
+controller = Müren.new do
   enable :logging
   helpers MyHelpers
 end
 
 map('/a') do
-  run Sinatra.new(controller) { get('/') { 'a' } }
+  run Müren.new(controller) { get('/') { 'a' } }
 end
 
 map('/b') do
-  run Sinatra.new(controller) { get('/') { 'b' } }
+  run Müren.new(controller) { get('/') { 'b' } }
 end
 ```
 
-This is especially useful for testing Sinatra extensions or using Sinatra in
+This is especially useful for testing Müren extensions or using Müren in
 your own library.
 
-This also makes using Sinatra as middleware extremely easy:
+This also makes using Müren as middleware extremely easy:
 
 ```ruby
-require 'sinatra/base'
+require 'muren/base'
 
-use Sinatra do
+use Müren do
   get('/') { ... }
 end
 
@@ -2739,9 +2739,9 @@ available.
 
 ### Application/Class Scope
 
-Every Sinatra application corresponds to a subclass of `Sinatra::Base`.
-If you are using the top-level DSL (`require 'sinatra'`), then this
-class is `Sinatra::Application`, otherwise it is the subclass you
+Every Müren application corresponds to a subclass of `Müren::Base`.
+If you are using the top-level DSL (`require 'muren'`), then this
+class is `Müren::Application`, otherwise it is the subclass you
 created explicitly. At the class level, you have methods like `get` or
 `before`, but you cannot access the `request` or `session` objects, as
 there is only a single application class for all requests.
@@ -2749,7 +2749,7 @@ there is only a single application class for all requests.
 Options created via `set` are methods at class level:
 
 ```ruby
-class MyApp < Sinatra::Base
+class MyApp < Müren::Base
   # Hey, I'm in the application scope!
   set :foo, 42
   foo # => 42
@@ -2766,7 +2766,7 @@ You have the application scope binding inside:
 * Methods defined by extensions
 * The block passed to `helpers`
 * Procs/blocks used as a value for `set`
-* The block passed to `Sinatra.new`
+* The block passed to `Müren.new`
 
 You can reach the scope object (the class) like this:
 
@@ -2782,7 +2782,7 @@ can access the `request` and `session` objects or call rendering methods like
 scope via the `settings` helper:
 
 ```ruby
-class MyApp < Sinatra::Base
+class MyApp < Müren::Base
   # Hey, I'm in the application scope!
   get '/define_route/:name' do
     # Request scope for '/define_route/:name'
@@ -2812,20 +2812,20 @@ does not behave exactly like the class scope, as you do not have the class
 binding. Only methods explicitly marked for delegation are available, and you
 do not share variables/state with the class scope (read: you have a different
 `self`). You can explicitly add method delegations by calling
-`Sinatra::Delegator.delegate :method_name`.
+`Müren::Delegator.delegate :method_name`.
 
 You have the delegate scope binding inside:
 
-* The top-level binding, if you did `require "sinatra"`
-* An object extended with the `Sinatra::Delegator` mixin
+* The top-level binding, if you did `require "muren"`
+* An object extended with the `Müren::Delegator` mixin
 
 Have a look at the code for yourself: here's the
-[Sinatra::Delegator mixin](https://github.com/sinatra/sinatra/blob/ca06364/lib/sinatra/base.rb#L1609-1633)
-being [extending the main object](https://github.com/sinatra/sinatra/blob/ca06364/lib/sinatra/main.rb#L28-30).
+[Müren::Delegator mixin](https://github.com/muren/muren/blob/ca06364/lib/muren/base.rb#L1609-1633)
+being [extending the main object](https://github.com/muren/muren/blob/ca06364/lib/muren/main.rb#L28-30).
 
 ## Command Line
 
-Sinatra applications can be run directly:
+Müren applications can be run directly:
 
 ```shell
 ruby myapp.rb [-h] [-x] [-q] [-e ENVIRONMENT] [-p PORT] [-o HOST] [-s HANDLER]
@@ -2849,8 +2849,8 @@ _Paraphrasing from
 [this StackOverflow answer](https://stackoverflow.com/a/6282999/5245129)
 by Konstantin_
 
-Sinatra doesn't impose any concurrency model but leaves that to the
-underlying Rack handler (server) like Puma or Falcon. Sinatra
+Müren doesn't impose any concurrency model but leaves that to the
+underlying Rack handler (server) like Puma or Falcon. Müren
 itself is thread-safe, so there won't be any problem if the Rack handler
 uses a threaded model of concurrency.
 
@@ -2875,30 +2875,30 @@ The following Ruby versions are officially supported:
   </dd>
 </dl>
 
-Versions of Ruby before 2.7.8 are no longer supported as of Sinatra 4.0.0.
+Versions of Ruby before 2.7.8 are no longer supported as of Müren 4.0.0.
 
-Sinatra should work on any operating system supported by the chosen Ruby
+Müren should work on any operating system supported by the chosen Ruby
 implementation.
 
-Running Sinatra on a not officially supported Ruby flavor means that if things only break there we assume it's not our issue but theirs.
+Running Müren on a not officially supported Ruby flavor means that if things only break there we assume it's not our issue but theirs.
 
 ## The Bleeding Edge
 
-If you would like to use Sinatra's latest bleeding-edge code, feel free
+If you would like to use Müren's latest bleeding-edge code, feel free
 to run your application against the main branch, it should be rather
 stable.
 
 We also push out prerelease gems from time to time, so you can do a
 
 ```shell
-gem install sinatra --pre
+gem install muren --pre
 ```
 
 to get some of the latest features.
 
 ### With Bundler
 
-If you want to run your application with the latest Sinatra, using
+If you want to run your application with the latest Müren, using
 [Bundler](https://bundler.io) is the recommended way.
 
 First, install bundler, if you haven't:
@@ -2911,14 +2911,14 @@ Then, in your project directory, create a `Gemfile`:
 
 ```ruby
 source 'https://rubygems.org'
-gem 'sinatra', :github => 'sinatra/sinatra'
+gem 'muren', :github => 'muren/muren'
 
 # other dependencies
 gem 'haml'                    # for instance, if you use haml
 ```
 
 Note that you will have to list all your application's dependencies in
-the `Gemfile`. Sinatra's direct dependencies (Rack and Tilt) will,
+the `Gemfile`. Müren's direct dependencies (Rack and Tilt) will,
 however, be automatically fetched and added by Bundler.
 
 Now you can run your app like this:
@@ -2929,24 +2929,24 @@ bundle exec ruby myapp.rb
 
 ## Versioning
 
-Sinatra follows [Semantic Versioning](https://semver.org/), both SemVer and
+Müren follows [Semantic Versioning](https://semver.org/), both SemVer and
 SemVerTag.
 
 ## Further Reading
 
-* [Project Website](https://sinatrarb.com/) - Additional documentation,
+* [Project Website](https://murenrb.com/) - Additional documentation,
   news, and links to other resources.
-* [Contributing](https://sinatrarb.com/contributing) - Find a bug? Need
+* [Contributing](https://murenrb.com/contributing) - Find a bug? Need
   help? Have a patch?
-* [Issue tracker](https://github.com/sinatra/sinatra/issues)
-* [Twitter](https://twitter.com/sinatra)
-* [Mailing List](https://groups.google.com/forum/#!forum/sinatrarb)
-* IRC: [#sinatra](irc://chat.freenode.net/#sinatra) on [Freenode](https://freenode.net)
-* [Sinatra & Friends](https://discord.gg/ncjsfsNHh7) on Discord
-* [Sinatra Book](https://github.com/sinatra/sinatra-book) - Cookbook Tutorial
-* [Sinatra Recipes](http://recipes.sinatrarb.com/) - Community contributed
+* [Issue tracker](https://github.com/muren/muren/issues)
+* [Twitter](https://twitter.com/muren)
+* [Mailing List](https://groups.google.com/forum/#!forum/murenrb)
+* IRC: [#muren](irc://chat.freenode.net/#muren) on [Freenode](https://freenode.net)
+* [Müren & Friends](https://discord.gg/ncjsfsNHh7) on Discord
+* [Müren Book](https://github.com/muren/muren-book) - Cookbook Tutorial
+* [Müren Recipes](http://recipes.murenrb.com/) - Community contributed
   recipes
-* API documentation for the [latest release](https://www.rubydoc.info/gems/sinatra)
-  or the [current HEAD](https://www.rubydoc.info/github/sinatra/sinatra) on
+* API documentation for the [latest release](https://www.rubydoc.info/gems/muren)
+  or the [current HEAD](https://www.rubydoc.info/github/muren/muren) on
   [RubyDoc](https://www.rubydoc.info/)
-* [CI Actions](https://github.com/sinatra/sinatra/actions)
+* [CI Actions](https://github.com/muren/muren/actions)

@@ -5,7 +5,7 @@ require_relative "test_helper"
 class HostAuthorization < Minitest::Test
   describe "in development environment" do
     setup do
-      Sinatra::Base.set :environment, :development
+      Muren::Base.set :environment, :development
     end
 
     %w[
@@ -128,7 +128,7 @@ class HostAuthorization < Minitest::Test
         set :host_authorization, {
           permitted_hosts: [allowed_host],
           allow_if: ->(env) do
-            request = Sinatra::Request.new(env)
+            request = Muren::Request.new(env)
             request.path == "/allowed"
           end
         }

@@ -107,19 +107,19 @@ use Rack::Protection, instrumenter: ActiveSupport::Notifications
 
 The instrumenter is passed a namespace (String) and environment (Hash). The namespace is 'rack.protection' and the attack type can be obtained from the environment key 'rack.protection.attack'.
 
-[authenticity-token]: http://www.sinatrarb.com/protection/authenticity_token
-[content-security-policy]: http://www.sinatrarb.com/protection/content_security_policy
-[cookie-tossing]: http://www.sinatrarb.com/protection/cookie_tossing
-[escaped-params]: http://www.sinatrarb.com/protection/escaped_params
-[form-token]: http://www.sinatrarb.com/protection/form_token
-[frame-options]: http://www.sinatrarb.com/protection/frame_options
-[host-authorization]: https://github.com/sinatra/sinatra/blob/main/rack-protection/lib/rack/protection/host_authorization.rb
-[http-origin]: http://www.sinatrarb.com/protection/http_origin
-[ip-spoofing]: http://www.sinatrarb.com/protection/ip_spoofing
-[json-csrf]: http://www.sinatrarb.com/protection/json_csrf
-[path-traversal]: http://www.sinatrarb.com/protection/path_traversal
-[remote-referrer]: http://www.sinatrarb.com/protection/remote_referrer
-[remote-token]: http://www.sinatrarb.com/protection/remote_token
-[session-hijacking]: http://www.sinatrarb.com/protection/session_hijacking
-[strict-transport]: http://www.sinatrarb.com/protection/strict_transport
-[xss-header]: http://www.sinatrarb.com/protection/xss_header
+[authenticity-token]: http://www.murenrb.com/protection/authenticity_token
+[content-security-policy]: http://www.murenrb.com/protection/content_security_policy
+[cookie-tossing]: http://www.murenrb.com/protection/cookie_tossing
+[escaped-params]: http://www.murenrb.com/protection/escaped_params
+[form-token]: http://www.murenrb.com/protection/form_token
+[frame-options]: http://www.murenrb.com/protection/frame_options
+[host-authorization]: https://github.com/muren/muren/blob/main/rack-protection/lib/rack/protection/host_authorization.rb
+[http-origin]: http://www.murenrb.com/protection/http_origin
+[ip-spoofing]: http://www.murenrb.com/protection/ip_spoofing
+[json-csrf]: http://www.murenrb.com/protection/json_csrf
+[path-traversal]: http://www.murenrb.com/protection/path_traversal
+[remote-referrer]: http://www.murenrb.com/protection/remote_referrer
+[remote-token]: http://www.murenrb.com/protection/remote_token
+[session-hijacking]: http://www.murenrb.com/protection/session_hijacking
+[strict-transport]: http://www.murenrb.com/protection/strict_transport
+[xss-header]: http://www.murenrb.com/protection/xss_header

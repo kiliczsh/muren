@@ -5,7 +5,7 @@
 # servers that buffer output. To shut down the server, close any
 # open browser tabs that are connected to the chat server.
 
-require 'sinatra'
+require 'muren'
 set :server, :puma
 connections = Set.new
 
@@ -40,7 +40,7 @@ __END__
 @@ layout
 <html>
   <head>
-    <title>Super Simple Chat with Sinatra</title>
+    <title>Super Simple Chat with Muren</title>
     <meta charset="utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   </head>

@@ -30,7 +30,7 @@ RSpec.describe Rack::Protection::CookieTossing do
       get '/some/path', {}, 'HTTP_COOKIE' => 'rack.%73ession=EVIL_SESSION_TOKEN; rack.session=EVIL_SESSION_TOKEN; rack.session=SESSION_TOKEN'
 
       # Rack no longer URI encodes the % in the cookie in Rack 3.1+
-      # https://github.com/sinatra/sinatra/issues/2017
+      # https://github.com/muren/muren/issues/2017
       cookie_key = if Rack::RELEASE < "3.1"
         "rack.%2573ession"
       else

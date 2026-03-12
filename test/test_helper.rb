@@ -2,7 +2,7 @@ if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start do
     add_filter '/test/'
-    add_group 'sinatra-contrib', 'sinatra-contrib'
+    add_group 'muren-contrib', 'muren-contrib'
     add_group 'rack-protection', 'rack-protection'
   end
 end
@@ -23,8 +23,8 @@ require 'rack/test'
 
 # Some of ActiveSupport's core extensions to Hash get loaded during internal
 # testing (e.g. by RABL and our RABL test) that we have no control over, but we
-# need them to load *before* Sinatra::IndifferentHash (which is itself loaded
-# by Sinatra::Base) whenever the full test suite is executed, so we'll do it
+# need them to load *before* Muren::IndifferentHash (which is itself loaded
+# by Muren::Base) whenever the full test suite is executed, so we'll do it
 # preemptively here.
 #
 # Newer Rubies have these methods built-in, so the extensions are no-ops.
@@ -32,9 +32,9 @@ require 'active_support/core_ext/hash/conversions'
 require 'active_support/core_ext/hash/slice'
 require 'active_support/core_ext/hash/keys'
 
-require 'sinatra/base'
+require 'muren/base'
 
-class Sinatra::Base
+class Muren::Base
   include Minitest::Assertions
   # Allow assertions in request context
   def assertions
@@ -50,7 +50,7 @@ class Rack::Builder
   end
 end
 
-Sinatra::Base.set :environment, :test
+Muren::Base.set :environment, :test
 
 class Minitest::Test
   include Rack::Test::Methods
@@ -69,14 +69,14 @@ class Minitest::Test
   alias_method :response, :last_response
 
   setup do
-    Sinatra::Base.set :environment, :test
+    Muren::Base.set :environment, :test
   end
 
-  # Sets up a Sinatra::Base subclass defined with the block
+  # Sets up a Muren::Base subclass defined with the block
   # given. Used in setup or individual spec methods to establish
   # the application.
-  def mock_app(base=Sinatra::Base, &block)
-    @app = Sinatra.new(base, &block)
+  def mock_app(base=Muren::Base, &block)
+    @app = Muren.new(base, &block)
   end
 
   def app

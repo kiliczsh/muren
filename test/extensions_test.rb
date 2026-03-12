@@ -32,47 +32,47 @@ class ExtensionsTest < Minitest::Test
   end
 
   it 'will add the methods to the DSL for the class in which you register them and its subclasses' do
-    Sinatra::Base.register FooExtensions
-    assert Sinatra::Base.respond_to?(:foo)
+    Muren::Base.register FooExtensions
+    assert Muren::Base.respond_to?(:foo)
 
-    Sinatra::Application.register BarExtensions
-    assert Sinatra::Application.respond_to?(:bar)
-    assert Sinatra::Application.respond_to?(:foo)
-    assert !Sinatra::Base.respond_to?(:bar)
+    Muren::Application.register BarExtensions
+    assert Muren::Application.respond_to?(:bar)
+    assert Muren::Application.respond_to?(:foo)
+    assert !Muren::Base.respond_to?(:bar)
   end
 
   it 'allows extending by passing a block' do
-    Sinatra::Base.register { def im_in_ur_anonymous_module; end }
-    assert Sinatra::Base.respond_to?(:im_in_ur_anonymous_module)
+    Muren::Base.register { def im_in_ur_anonymous_module; end }
+    assert Muren::Base.respond_to?(:im_in_ur_anonymous_module)
   end
 
-  it 'will make sure any public methods added via Application#register are delegated to Sinatra::Delegator' do
-    Sinatra::Application.register FooExtensions
-    assert Sinatra::Delegator.private_instance_methods.
+  it 'will make sure any public methods added via Application#register are delegated to Muren::Delegator' do
+    Muren::Application.register FooExtensions
+    assert Muren::Delegator.private_instance_methods.
       map { |m| m.to_sym }.include?(:foo)
-    assert !Sinatra::Delegator.private_instance_methods.
+    assert !Muren::Delegator.private_instance_methods.
       map { |m| m.to_sym }.include?(:im_hiding_in_ur_foos)
   end
 
   it 'will handle special method names' do
-    Sinatra::Application.register PainExtensions
-    assert Sinatra::Delegator.private_instance_methods.
+    Muren::Application.register PainExtensions
+    assert Muren::Delegator.private_instance_methods.
       map { |m| m.to_sym }.include?(:foo=)
-    assert Sinatra::Delegator.private_instance_methods.
+    assert Muren::Delegator.private_instance_methods.
       map { |m| m.to_sym }.include?(:bar?)
-    assert Sinatra::Delegator.private_instance_methods.
+    assert Muren::Delegator.private_instance_methods.
       map { |m| m.to_sym }.include?(:fizz!)
   end
 
   it 'will not delegate methods on Base#register' do
-    Sinatra::Base.register QuuxExtensions
-    assert !Sinatra::Delegator.private_instance_methods.include?("quux")
+    Muren::Base.register QuuxExtensions
+    assert !Muren::Delegator.private_instance_methods.include?("quux")
   end
 
-  it 'will extend the Sinatra::Application application by default' do
-    Sinatra.register BazExtensions
-    assert !Sinatra::Base.respond_to?(:baz)
-    assert Sinatra::Application.respond_to?(:baz)
+  it 'will extend the Muren::Application application by default' do
+    Muren.register BazExtensions
+    assert !Muren::Base.respond_to?(:baz)
+    assert Muren::Application.respond_to?(:baz)
   end
 
   module BizzleExtension
@@ -87,7 +87,7 @@ class ExtensionsTest < Minitest::Test
     end
   end
 
-  class BizzleApp < Sinatra::Base
+  class BizzleApp < Muren::Base
   end
 
   it 'sends .registered to the extension module after extending the class' do

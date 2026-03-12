@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 
 class ResponseTest < Minitest::Test
-  setup { @response = Sinatra::Response.new([], 200, { 'Content-Type' => 'text/html' }) }
+  setup { @response = Muren::Response.new([], 200, { 'Content-Type' => 'text/html' }) }
 
   def assert_same_body(a, b)
     assert_equal a.to_enum(:each).to_a, b.to_enum(:each).to_a
@@ -62,8 +62,8 @@ class ResponseTest < Minitest::Test
     assert @response.finish
   end
 
-  it 'does not nest a Sinatra::Response' do
-    @response.body = Sinatra::Response.new ["foo"]
+  it 'does not nest a Muren::Response' do
+    @response.body = Muren::Response.new ["foo"]
     assert_same_body @response.body, ["foo"]
   end
 

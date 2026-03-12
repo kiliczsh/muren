@@ -7,11 +7,11 @@ Gem::Specification.new do |s|
   s.name        = 'rack-protection'
   s.version     = Rack::Protection::VERSION
   s.description = 'Protect against typical web attacks, works with all Rack apps, including Rails'
-  s.homepage    = 'https://sinatrarb.com/protection/'
+  s.homepage    = 'https://murenrb.com/protection/'
   s.summary     = "#{s.description}."
   s.license     = 'MIT'
-  s.authors     = ['https://github.com/sinatra/sinatra/graphs/contributors']
-  s.email       = 'sinatrarb@googlegroups.com'
+  s.authors     = ['https://github.com/muren/muren/graphs/contributors']
+  s.email       = 'murenrb@googlegroups.com'
   s.files       = Dir['lib/**/*.rb'] + [
     'License',
     'README.md',
@@ -30,8 +30,8 @@ RubyGems 2.0 or newer is required to protect against public gem pushes. You can 
   end
 
   s.metadata = {
-    'source_code_uri' => 'https://github.com/sinatra/sinatra/tree/main/rack-protection',
-    'homepage_uri' => 'http://sinatrarb.com/protection/',
+    'source_code_uri' => 'https://github.com/muren/muren/tree/main/rack-protection',
+    'homepage_uri' => 'http://murenrb.com/protection/',
     'documentation_uri' => 'https://www.rubydoc.info/gems/rack-protection',
     'rubygems_mfa_required' => 'true'
   }

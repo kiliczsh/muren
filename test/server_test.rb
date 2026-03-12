@@ -14,7 +14,7 @@ module Rackup::Handler
     end
 
     def self.run(app, options={})
-      assert(app < Sinatra::Base)
+      assert(app < Muren::Base)
       assert_equal 9001, options[:Port]
       assert_equal 'foo.local', options[:Host]
       yield new
@@ -112,13 +112,13 @@ class ServerTest < Minitest::Test
   describe "Quiet mode" do
     it "sends data to stderr when server starts and stops" do
       @app.run!
-      assert_match(/\=\= Sinatra/, $stderr.string)
+      assert_match(/\=\= Muren/, $stderr.string)
     end
 
     context "when quiet mode is activated" do
-      it "does not generate Sinatra start and stop messages" do
+      it "does not generate Muren start and stop messages" do
         @app.run! quiet: true
-        refute_match(/\=\= Sinatra/, $stderr.string)
+        refute_match(/\=\= Muren/, $stderr.string)
       end
     end
   end

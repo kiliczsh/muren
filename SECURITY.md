@@ -1,6 +1,6 @@
 # Reporting a security bug
 
-All security bugs in Sinatra should be reported to the core team through our private mailing list [sinatra-security@googlegroups.com](https://groups.google.com/group/sinatra-security). Your report will be acknowledged within 24 hours, and you’ll receive a more detailed response to your email within 48 hours indicating the next steps in handling your report.
+All security bugs in Müren should be reported to the core team through our private mailing list [muren-security@googlegroups.com](https://groups.google.com/group/muren-security). Your report will be acknowledged within 24 hours, and you’ll receive a more detailed response to your email within 48 hours indicating the next steps in handling your report.
 
 After the initial reply to your report the security team will endeavor to keep you informed of the progress being made towards a fix and full announcement. These updates will be sent at least every five days, in reality this is more likely to be every 24-48 hours.
 
@@ -10,7 +10,7 @@ If you have not received a reply to your email within 48 hours, or have not hear
 
 ## Disclosure Policy
 
-Sinatra has a 5 step disclosure policy, that is upheld to the best of our ability.
+Müren has a 5 step disclosure policy, that is upheld to the best of our ability.
 
 1. Security report received and is assigned a primary handler. This person will coordinate the fix and release process.
 2. Problem is confirmed and, a list of all affected versions is determined. Code is audited to find any potential similar problems.
@@ -28,8 +28,8 @@ Security updates will be posted on the [mailing list][mailing-list] and [securit
 
 ## Comments on this Policy
 
-If you have any suggestions to improve this policy, please send an email the core team at [sinatrarb@googlegroups.com](https://groups.google.com/group/sinatrarb).
+If you have any suggestions to improve this policy, please send an email the core team at [murenrb@googlegroups.com](https://groups.google.com/group/murenrb).
 
 
-[mailing-list]: http://groups.google.com/group/sinatrarb/topics
-[security-list]: http://groups.google.com/group/sinatra-security/topics
+[mailing-list]: http://groups.google.com/group/murenrb/topics
+[security-list]: http://groups.google.com/group/muren-security/topics

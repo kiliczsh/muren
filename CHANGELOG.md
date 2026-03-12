@@ -2,34 +2,34 @@
 
 ## 4.2.1 / 2025-10-10
 
-* Fix: Revert "`PATH_INFO` can never be empty" ([#2124](https://github.com/sinatra/sinatra/pull/2124))
-  * addresses issues with routing and 404, [more in the original pull request](https://github.com/sinatra/sinatra/issues/2113#issuecomment-3388476329)
+* Fix: Revert "`PATH_INFO` can never be empty" ([#2124](https://github.com/muren/muren/pull/2124))
+  * addresses issues with routing and 404, [more in the original pull request](https://github.com/muren/muren/issues/2113#issuecomment-3388476329)
 
 ## 4.2.0 / 2025-10-08
 
-* New: Add `:static_headers` setting for custom headers in static file responses ([#2089](https://github.com/sinatra/sinatra/pull/2089))
-* Fix: Fix regex in `etag_matches?` to prevent ReDoS ([#2121](https://github.com/sinatra/sinatra/pull/2121))
-* Fix: `PATH_INFO` can never be empty ([#2114](https://github.com/sinatra/sinatra/pull/2114))
-* Fix: Fix malformed Content-Type headers ([#2081](https://github.com/sinatra/sinatra/pull/2081))
-* Fix: Avoid crash for integer values in `content_type` parameters ([#2078](https://github.com/sinatra/sinatra/pull/2078))
+* New: Add `:static_headers` setting for custom headers in static file responses ([#2089](https://github.com/muren/muren/pull/2089))
+* Fix: Fix regex in `etag_matches?` to prevent ReDoS ([#2121](https://github.com/muren/muren/pull/2121))
+* Fix: `PATH_INFO` can never be empty ([#2114](https://github.com/muren/muren/pull/2114))
+* Fix: Fix malformed Content-Type headers ([#2081](https://github.com/muren/muren/pull/2081))
+* Fix: Avoid crash for integer values in `content_type` parameters ([#2078](https://github.com/muren/muren/pull/2078))
 
 ## 4.1.1 / 2024-11-20
 
-* Fix: Restore WEBrick support ([#2067](https://github.com/sinatra/sinatra/pull/2067))
+* Fix: Restore WEBrick support ([#2067](https://github.com/muren/muren/pull/2067))
 
 ## 4.1.0 / 2024-11-18
 
-* New: Add `host_authorization` setting ([#2053](https://github.com/sinatra/sinatra/pull/2053))
+* New: Add `host_authorization` setting ([#2053](https://github.com/muren/muren/pull/2053))
   * Defaults to `.localhost`, `.test` and any IP address in development mode.
   * Security: addresses [CVE-2024-21510](https://github.com/advisories/GHSA-hxx2-7vcw-mqr3).
-* Fix: Return an instance of `Sinatra::IndifferentHash` when calling `#except` ([#2044](https://github.com/sinatra/sinatra/pull/2044))
-* Fix: Address warning from `URI` for Ruby 3.4 ([#2060](https://github.com/sinatra/sinatra/pull/2060))
-* Fix: `rackup` no longer depends on WEBrick, recommend Puma instead ([`4a558503`](https://github.com/sinatra/sinatra/commit/4a558503a0ee41f26d4ebc07b478340e8a8a5ed6))
-* Fix: Zeitwerk 2.7.0+ compatibility ([#2050](https://github.com/sinatra/sinatra/pull/2050))
-* Fix: Address warning about Hash construction for Ruby 3.4 ([#2028](https://github.com/sinatra/sinatra/pull/2028))
-* Fix: Declare missing dependencies for Ruby 3.5 ([#2032](https://github.com/sinatra/sinatra/pull/2032))
-* Fix: Compatibility with `--enable-frozen-string-literal` ([#2033](https://github.com/sinatra/sinatra/pull/2033))
-* Fix: Rack 3.1 compatibility ([#2035](https://github.com/sinatra/sinatra/pull/2035))
+* Fix: Return an instance of `Müren::IndifferentHash` when calling `#except` ([#2044](https://github.com/muren/muren/pull/2044))
+* Fix: Address warning from `URI` for Ruby 3.4 ([#2060](https://github.com/muren/muren/pull/2060))
+* Fix: `rackup` no longer depends on WEBrick, recommend Puma instead ([`4a558503`](https://github.com/muren/muren/commit/4a558503a0ee41f26d4ebc07b478340e8a8a5ed6))
+* Fix: Zeitwerk 2.7.0+ compatibility ([#2050](https://github.com/muren/muren/pull/2050))
+* Fix: Address warning about Hash construction for Ruby 3.4 ([#2028](https://github.com/muren/muren/pull/2028))
+* Fix: Declare missing dependencies for Ruby 3.5 ([#2032](https://github.com/muren/muren/pull/2032))
+* Fix: Compatibility with `--enable-frozen-string-literal` ([#2033](https://github.com/muren/muren/pull/2033))
+* Fix: Rack 3.1 compatibility ([#2035](https://github.com/muren/muren/pull/2035))
   * Don't depend on `Rack::Logger`
   * Don't delete `content-length` header when `Rack::Files` is used
 
@@ -51,14 +51,14 @@
 
 * Address URI depreciation ([#2060])
 
-[#2035]: https://github.com/sinatra/sinatra/pull/2035
-[#2081]: https://github.com/sinatra/sinatra/pull/2081
-[#2078]: https://github.com/sinatra/sinatra/pull/2078
-[#2033]: https://github.com/sinatra/sinatra/pull/2033
-[#2032]: https://github.com/sinatra/sinatra/pull/2032
-[#2028]: https://github.com/sinatra/sinatra/pull/2028
-[#2050]: https://github.com/sinatra/sinatra/pull/2050
-[#2060]: https://github.com/sinatra/sinatra/pull/2060
+[#2035]: https://github.com/muren/muren/pull/2035
+[#2081]: https://github.com/muren/muren/pull/2081
+[#2078]: https://github.com/muren/muren/pull/2078
+[#2033]: https://github.com/muren/muren/pull/2033
+[#2032]: https://github.com/muren/muren/pull/2032
+[#2028]: https://github.com/muren/muren/pull/2028
+[#2050]: https://github.com/muren/muren/pull/2050
+[#2060]: https://github.com/muren/muren/pull/2060
 
 ## 4.0.0. / 2024-01-19
 
@@ -68,7 +68,7 @@
 * Require Ruby 2.7.8 as minimum Ruby version ([#1993])
 
 * Breaking change: Drop support for Rack 2 ([#1857])
-  * Note: when using Sinatra to start the web server, you now need the `rackup` gem installed
+  * Note: when using Müren to start the web server, you now need the `rackup` gem installed
 
 * Breaking change: Remove the `IndifferentHash` initializer ([#1982])
 
@@ -77,36 +77,36 @@
 * Breaking change: Remove `Rack::Protection::EncryptedCookie` ([#1989])
   * Note: cookies are still encrypted (by [`Rack::Session::Cookie`])
 
-[#1857]: https://github.com/sinatra/sinatra/pull/1857
-[#1993]: https://github.com/sinatra/sinatra/pull/1993
-[#1982]: https://github.com/sinatra/sinatra/pull/1982
-[#1984]: https://github.com/sinatra/sinatra/pull/1984
-[#1989]: https://github.com/sinatra/sinatra/pull/1989
+[#1857]: https://github.com/muren/muren/pull/1857
+[#1993]: https://github.com/muren/muren/pull/1993
+[#1982]: https://github.com/muren/muren/pull/1982
+[#1984]: https://github.com/muren/muren/pull/1984
+[#1989]: https://github.com/muren/muren/pull/1989
 [`Rack::Session::Cookie`]: https://github.com/rack/rack-session
 [Rack 3 Upgrade Guide]: https://github.com/rack/rack/blob/main/UPGRADE-GUIDE.md
 
 ## 3.2.0 / 2023-12-29
 
-* New: Add `#except` method to `Sinatra::IndifferentHash` ([#1940])
+* New: Add `#except` method to `Müren::IndifferentHash` ([#1940])
 
 * New: Use `Exception#detailed_message` to show backtrace ([#1952])
 
-* New: Add `Sinatra::HamlHelpers` to sinatra-contrib ([#1960])
+* New: Add `Müren::HamlHelpers` to muren-contrib ([#1960])
 
 * Fix: Add `base64` to rack-protection runtime dependencies ([#1946])
 
-* Fix: Avoid open-ended dependencies for sinatra-contrib and rack-protection ([#1949])
+* Fix: Avoid open-ended dependencies for muren-contrib and rack-protection ([#1949])
 
-* Fix: Helpful message when `Sinatra::Runner` times out ([#1975])
+* Fix: Helpful message when `Müren::Runner` times out ([#1975])
 
 * Fix: Ruby 3.3 + Bundler 2.5 compatibility ([#1975])
 
-[#1940]: https://github.com/sinatra/sinatra/pull/1940
-[#1946]: https://github.com/sinatra/sinatra/pull/1946
-[#1949]: https://github.com/sinatra/sinatra/pull/1949
-[#1952]: https://github.com/sinatra/sinatra/pull/1952
-[#1960]: https://github.com/sinatra/sinatra/pull/1960
-[#1975]: https://github.com/sinatra/sinatra/pull/1975
+[#1940]: https://github.com/muren/muren/pull/1940
+[#1946]: https://github.com/muren/muren/pull/1946
+[#1949]: https://github.com/muren/muren/pull/1949
+[#1952]: https://github.com/muren/muren/pull/1952
+[#1960]: https://github.com/muren/muren/pull/1960
+[#1975]: https://github.com/muren/muren/pull/1975
 
 ## 3.1.0 / 2023-08-07
 
@@ -122,96 +122,96 @@
 
 * Fix: rack-protection: specify rack version requirement [#1932] by Patrik Ragnarsson
 
-[#1911]: https://github.com/sinatra/sinatra/pull/1911
-[#1913]: https://github.com/sinatra/sinatra/pull/1913
-[#1900]: https://github.com/sinatra/sinatra/pull/1900
-[#1924]: https://github.com/sinatra/sinatra/pull/1924
-[#1922]: https://github.com/sinatra/sinatra/pull/1922
-[#1932]: https://github.com/sinatra/sinatra/pull/1932
+[#1911]: https://github.com/muren/muren/pull/1911
+[#1913]: https://github.com/muren/muren/pull/1913
+[#1900]: https://github.com/muren/muren/pull/1900
+[#1924]: https://github.com/muren/muren/pull/1924
+[#1922]: https://github.com/muren/muren/pull/1922
+[#1932]: https://github.com/muren/muren/pull/1932
 
 ## 3.0.6 / 2023-04-11
 
-* Fix: Add support to keep open streaming connections with Puma [#1858](https://github.com/sinatra/sinatra/pull/1858) by Jordan Owens
+* Fix: Add support to keep open streaming connections with Puma [#1858](https://github.com/muren/muren/pull/1858) by Jordan Owens
 
-* Fix: Avoid crash in `uri` helper on Integer input [#1890](https://github.com/sinatra/sinatra/pull/1890) by Patrik Ragnarsson
+* Fix: Avoid crash in `uri` helper on Integer input [#1890](https://github.com/muren/muren/pull/1890) by Patrik Ragnarsson
 
-* Fix: Rescue `RuntimeError` when trying to use `SecureRandom` [#1888](https://github.com/sinatra/sinatra/pull/1888) by Stefan Sundin
+* Fix: Rescue `RuntimeError` when trying to use `SecureRandom` [#1888](https://github.com/muren/muren/pull/1888) by Stefan Sundin
 
 ## 3.0.5 / 2022-12-16
 
-* Fix: Add Zeitwerk compatibility. [#1831](https://github.com/sinatra/sinatra/pull/1831) by Dawid Janczak
+* Fix: Add Zeitwerk compatibility. [#1831](https://github.com/muren/muren/pull/1831) by Dawid Janczak
 
 * Fix: Allow CALLERS_TO_IGNORE to be overridden
 
 ## 3.0.4 / 2022-11-25
 
-* Fix: Escape filename in the Content-Disposition header. [#1841](https://github.com/sinatra/sinatra/pull/1841) by Kunpei Sakai
+* Fix: Escape filename in the Content-Disposition header. [#1841](https://github.com/muren/muren/pull/1841) by Kunpei Sakai
 
 ## 3.0.3 / 2022-11-11
 
-* Fix: fixed ReDoS for Rack::Protection::IPSpoofing. [#1823](https://github.com/sinatra/sinatra/pull/1823) by @ooooooo-q
+* Fix: fixed ReDoS for Rack::Protection::IPSpoofing. [#1823](https://github.com/muren/muren/pull/1823) by @ooooooo-q
 
 ## 3.0.2 / 2022-10-01
 
-* New: Add Haml 6 support. [#1820](https://github.com/sinatra/sinatra/pull/1820) by Jordan Owens
+* New: Add Haml 6 support. [#1820](https://github.com/muren/muren/pull/1820) by Jordan Owens
 
 ## 3.0.1 / 2022-09-26
 
-* Fix: Revert removal of rack-protection.rb. [#1814](https://github.com/sinatra/sinatra/pull/1814) by Olle Jonsson
+* Fix: Revert removal of rack-protection.rb. [#1814](https://github.com/muren/muren/pull/1814) by Olle Jonsson
 
-* Fix: Revert change to server start and stop messaging by using Kernel#warn. Renamed internal warn method warn_for_deprecation. [#1818](https://github.com/sinatra/sinatra/pull/1818) by Jordan Owens
+* Fix: Revert change to server start and stop messaging by using Kernel#warn. Renamed internal warn method warn_for_deprecation. [#1818](https://github.com/muren/muren/pull/1818) by Jordan Owens
 
 ## 3.0.0 / 2022-09-26
 
-* New: Add Falcon support. [#1794](https://github.com/sinatra/sinatra/pull/1794) by Samuel Williams and @horaciob
+* New: Add Falcon support. [#1794](https://github.com/muren/muren/pull/1794) by Samuel Williams and @horaciob
 
-* New: Add AES GCM encryption support for session cookies. [#1324] (https://github.com/sinatra/sinatra/pull/1324) by Michael Coyne
+* New: Add AES GCM encryption support for session cookies. [#1324] (https://github.com/muren/muren/pull/1324) by Michael Coyne
 
-* Deprecated: Sinatra Reloader will be removed in the next major release.
+* Deprecated: Müren Reloader will be removed in the next major release.
 
-* Fix: Internal Sinatra errors now extend `Sinatra::Error`. This fixes [#1204](https://github.com/sinatra/sinatra/issues/1204) and [#1518](https://github.com/sinatra/sinatra/issues/1518). [bda8c29d](https://github.com/sinatra/sinatra/commit/bda8c29d70619d53f5b1c181140638d340695514) by Jordan Owens
+* Fix: Internal Müren errors now extend `Müren::Error`. This fixes [#1204](https://github.com/muren/muren/issues/1204) and [#1518](https://github.com/muren/muren/issues/1518). [bda8c29d](https://github.com/muren/muren/commit/bda8c29d70619d53f5b1c181140638d340695514) by Jordan Owens
 
-* Fix: Preserve query param value if named route param nil. [#1676](https://github.com/sinatra/sinatra/pull/1676) by Jordan Owens
+* Fix: Preserve query param value if named route param nil. [#1676](https://github.com/muren/muren/pull/1676) by Jordan Owens
 
-* Require Ruby 2.6 as minimum Ruby version. [#1699](https://github.com/sinatra/sinatra/pull/1699) by Eloy Pérez
+* Require Ruby 2.6 as minimum Ruby version. [#1699](https://github.com/muren/muren/pull/1699) by Eloy Pérez
 
-* Breaking change: Remove support for the Stylus template engine. [#1697](https://github.com/sinatra/sinatra/pull/1697) by Eloy Pérez
+* Breaking change: Remove support for the Stylus template engine. [#1697](https://github.com/muren/muren/pull/1697) by Eloy Pérez
 
-* Breaking change: Remove support for the erubis template engine. [#1761](https://github.com/sinatra/sinatra/pull/1761) by Eloy Pérez
+* Breaking change: Remove support for the erubis template engine. [#1761](https://github.com/muren/muren/pull/1761) by Eloy Pérez
 
-* Breaking change: Remove support for the textile template engine. [#1766](https://github.com/sinatra/sinatra/pull/1766) by Eloy Pérez
+* Breaking change: Remove support for the textile template engine. [#1766](https://github.com/muren/muren/pull/1766) by Eloy Pérez
 
-* Breaking change: Remove support for SASS as a template engine. [#1768](https://github.com/sinatra/sinatra/pull/1768) by Eloy Pérez
+* Breaking change: Remove support for SASS as a template engine. [#1768](https://github.com/muren/muren/pull/1768) by Eloy Pérez
 
-* Breaking change: Remove support for Wlang as a template engine. [#1780](https://github.com/sinatra/sinatra/pull/1780) by Eloy Pérez
+* Breaking change: Remove support for Wlang as a template engine. [#1780](https://github.com/muren/muren/pull/1780) by Eloy Pérez
 
-* Breaking change: Remove support for CoffeeScript as a template engine. [#1790](https://github.com/sinatra/sinatra/pull/1790) by Eloy Pérez
+* Breaking change: Remove support for CoffeeScript as a template engine. [#1790](https://github.com/muren/muren/pull/1790) by Eloy Pérez
 
-* Breaking change: Remove support for Mediawiki as a template engine. [#1791](https://github.com/sinatra/sinatra/pull/1791) by Eloy Pérez
+* Breaking change: Remove support for Mediawiki as a template engine. [#1791](https://github.com/muren/muren/pull/1791) by Eloy Pérez
 
-* Breaking change: Remove support for Creole as a template engine. [#1792](https://github.com/sinatra/sinatra/pull/1792) by Eloy Pérez
+* Breaking change: Remove support for Creole as a template engine. [#1792](https://github.com/muren/muren/pull/1792) by Eloy Pérez
 
-* Breaking change: Remove support for Radius as a template engine. [#1793](https://github.com/sinatra/sinatra/pull/1793) by Eloy Pérez
+* Breaking change: Remove support for Radius as a template engine. [#1793](https://github.com/muren/muren/pull/1793) by Eloy Pérez
 
-* Breaking change: Remove support for the defunct Less templating library. See [#1716](https://github.com/sinatra/sinatra/issues/1716), [#1715](https://github.com/sinatra/sinatra/issues/1715) for more discussion and background. [d1af2f1e](https://github.com/sinatra/sinatra/commit/d1af2f1e6c8710419dfe3102a660f7a32f0e67e3) by Olle Jonsson
+* Breaking change: Remove support for the defunct Less templating library. See [#1716](https://github.com/muren/muren/issues/1716), [#1715](https://github.com/muren/muren/issues/1715) for more discussion and background. [d1af2f1e](https://github.com/muren/muren/commit/d1af2f1e6c8710419dfe3102a660f7a32f0e67e3) by Olle Jonsson
 
-* Breaking change: Remove Reel integration. [54597502](https://github.com/sinatra/sinatra/commit/545975025927a27a1daca790598620038979f1c5) by Olle Jonsson
+* Breaking change: Remove Reel integration. [54597502](https://github.com/muren/muren/commit/545975025927a27a1daca790598620038979f1c5) by Olle Jonsson
 
-* CI: Start testing on Ruby 3.1. [60e221940](https://github.com/sinatra/sinatra/commit/60e2219407e6ae067bf3e53eb060ee4860c60c8d) and [b0fa4bef](https://github.com/sinatra/sinatra/commit/b0fa4beffaa3b10bf02947d0a35e137403296c6b) by Johannes Würbach
+* CI: Start testing on Ruby 3.1. [60e221940](https://github.com/muren/muren/commit/60e2219407e6ae067bf3e53eb060ee4860c60c8d) and [b0fa4bef](https://github.com/muren/muren/commit/b0fa4beffaa3b10bf02947d0a35e137403296c6b) by Johannes Würbach
 
-* Use `Kernel#caller_locations`. [#1491](https://github.com/sinatra/sinatra/pull/1491) by Julik Tarkhanov
+* Use `Kernel#caller_locations`. [#1491](https://github.com/muren/muren/pull/1491) by Julik Tarkhanov
 
-* Docs: Japanese documentation: Add notes about the `default_content_type` setting. [#1650](https://github.com/sinatra/sinatra/pull/1650)  by Akifumi Tominaga
+* Docs: Japanese documentation: Add notes about the `default_content_type` setting. [#1650](https://github.com/muren/muren/pull/1650)  by Akifumi Tominaga
 
-* Docs: Polish documentation: Add section about Multithreaded modes and Routes. [#1708](https://github.com/sinatra/sinatra/pull/1708) by Patrick Gramatowski
+* Docs: Polish documentation: Add section about Multithreaded modes and Routes. [#1708](https://github.com/muren/muren/pull/1708) by Patrick Gramatowski
 
-* Docs: Japanese documentation: Make Session section reflect changes done to README.md. [#1731](https://github.com/sinatra/sinatra/pull/1731) by @shu-i-chi
+* Docs: Japanese documentation: Make Session section reflect changes done to README.md. [#1731](https://github.com/muren/muren/pull/1731) by @shu-i-chi
 
 ## 2.2.3 / 2022-11-25
 
-* Fix: Escape filename in the Content-Disposition header. [#1841](https://github.com/sinatra/sinatra/pull/1841) by Kunpei Sakai
+* Fix: Escape filename in the Content-Disposition header. [#1841](https://github.com/muren/muren/pull/1841) by Kunpei Sakai
 
-* Fix: fixed ReDoS for Rack::Protection::IPSpoofing. [#1823](https://github.com/sinatra/sinatra/pull/1823) by @ooooooo-q
+* Fix: fixed ReDoS for Rack::Protection::IPSpoofing. [#1823](https://github.com/muren/muren/pull/1823) by @ooooooo-q
 
 ## 2.2.2 / 2022-07-23
 
@@ -225,302 +225,302 @@
 
 ## 2.2.0 / 2022-02-15
 
-* Breaking change: Add `#select`, `#reject` and `#compact` methods to `Sinatra::IndifferentHash`. If hash keys need to be converted to symbols, call `#to_h` to get a `Hash` instance first. [#1711](https://github.com/sinatra/sinatra/pull/1711) by Olivier Bellone
+* Breaking change: Add `#select`, `#reject` and `#compact` methods to `Müren::IndifferentHash`. If hash keys need to be converted to symbols, call `#to_h` to get a `Hash` instance first. [#1711](https://github.com/muren/muren/pull/1711) by Olivier Bellone
 
-* Handle EOFError raised by Rack and return Bad Request 400 status. [#1743](https://github.com/sinatra/sinatra/pull/1743) by tamazon
+* Handle EOFError raised by Rack and return Bad Request 400 status. [#1743](https://github.com/muren/muren/pull/1743) by tamazon
 
-* Minor refactors in `base.rb`. [#1640](https://github.com/sinatra/sinatra/pull/1640) by ceclinux
+* Minor refactors in `base.rb`. [#1640](https://github.com/muren/muren/pull/1640) by ceclinux
 
-* Add escaping to the static 404 page. [#1645](https://github.com/sinatra/sinatra/pull/1645) by Chris Gavin
+* Add escaping to the static 404 page. [#1645](https://github.com/muren/muren/pull/1645) by Chris Gavin
 
-* Remove `detect_rack_handler` method. [#1652](https://github.com/sinatra/sinatra/pull/1652) by ceclinux
+* Remove `detect_rack_handler` method. [#1652](https://github.com/muren/muren/pull/1652) by ceclinux
 
-* Respect content type set in superclass before filter. Fixes [#1647](https://github.com/sinatra/sinatra/issues/1647) [#1649](https://github.com/sinatra/sinatra/pull/1649) by Jordan Owens
+* Respect content type set in superclass before filter. Fixes [#1647](https://github.com/muren/muren/issues/1647) [#1649](https://github.com/muren/muren/pull/1649) by Jordan Owens
 
-* *Revert "Use prepend instead of include for helpers.* [#1662](https://github.com/sinatra/sinatra/pull/1662) by namusyaka
+* *Revert "Use prepend instead of include for helpers.* [#1662](https://github.com/muren/muren/pull/1662) by namusyaka
 
-* Fix usage of inherited `Sinatra::Base` classes keyword arguments. Fixes [#1669](https://github.com/sinatra/sinatra/issues/1669) [#1670](https://github.com/sinatra/sinatra/pull/1670) by Cadu Ribeiro
+* Fix usage of inherited `Müren::Base` classes keyword arguments. Fixes [#1669](https://github.com/muren/muren/issues/1669) [#1670](https://github.com/muren/muren/pull/1670) by Cadu Ribeiro
 
-* Reduce RDoc generation time by not including every README. Fixes [#1578](https://github.com/sinatra/sinatra/issues/1578) [#1671](https://github.com/sinatra/sinatra/pull/1671) by Eloy Pérez
+* Reduce RDoc generation time by not including every README. Fixes [#1578](https://github.com/muren/muren/issues/1578) [#1671](https://github.com/muren/muren/pull/1671) by Eloy Pérez
 
-* Add support for per form csrf tokens. Fixes [#1616](https://github.com/sinatra/sinatra/issues/1616) [#1653](https://github.com/sinatra/sinatra/pull/1653) by Jordan Owens
+* Add support for per form csrf tokens. Fixes [#1616](https://github.com/muren/muren/issues/1616) [#1653](https://github.com/muren/muren/pull/1653) by Jordan Owens
 
-* Update MAINTENANCE.md with the `stable` branch status. [#1681](https://github.com/sinatra/sinatra/pull/1681) by Fredrik Rubensson
+* Update MAINTENANCE.md with the `stable` branch status. [#1681](https://github.com/muren/muren/pull/1681) by Fredrik Rubensson
 
-* Validate expanded path matches `public_dir` when serving static files. [#1683](https://github.com/sinatra/sinatra/pull/1683) by cji-stripe
+* Validate expanded path matches `public_dir` when serving static files. [#1683](https://github.com/muren/muren/pull/1683) by cji-stripe
 
-* Fix Delegator to pass keyword arguments for Ruby 3.0. [#1684](https://github.com/sinatra/sinatra/pull/1684) by andrewtblake
+* Fix Delegator to pass keyword arguments for Ruby 3.0. [#1684](https://github.com/muren/muren/pull/1684) by andrewtblake
 
-* Fix use with keyword arguments for Ruby 3.0. [#1701](https://github.com/sinatra/sinatra/pull/1701) by Robin Wallin
+* Fix use with keyword arguments for Ruby 3.0. [#1701](https://github.com/muren/muren/pull/1701) by Robin Wallin
 
-* Fix memory leaks for proc template. Fixes [#1704](https://github.com/sinatra/sinatra/issues/1714) [#1719](https://github.com/sinatra/sinatra/pull/1719) by Slevin
+* Fix memory leaks for proc template. Fixes [#1704](https://github.com/muren/muren/issues/1714) [#1719](https://github.com/muren/muren/pull/1719) by Slevin
 
-* Remove unnecessary `test_files` from the gemspec. [#1712](https://github.com/sinatra/sinatra/pull/1712) by Masataka Pocke Kuwabara
+* Remove unnecessary `test_files` from the gemspec. [#1712](https://github.com/muren/muren/pull/1712) by Masataka Pocke Kuwabara
 
-* Docs: Spanish documentation: Update README.es.md with removal of Thin. [#1630](https://github.com/sinatra/sinatra/pull/1630) by Espartaco Palma
+* Docs: Spanish documentation: Update README.es.md with removal of Thin. [#1630](https://github.com/muren/muren/pull/1630) by Espartaco Palma
 
-* Docs: German documentation: Fixed typos in German README.md. [#1648](https://github.com/sinatra/sinatra/pull/1648) by Juri
+* Docs: German documentation: Fixed typos in German README.md. [#1648](https://github.com/muren/muren/pull/1648) by Juri
 
-* Docs: Japanese documentation: Update README.ja.md with removal of Thin. [#1629](https://github.com/sinatra/sinatra/pull/1629) by Ryuichi KAWAMATA
+* Docs: Japanese documentation: Update README.ja.md with removal of Thin. [#1629](https://github.com/muren/muren/pull/1629) by Ryuichi KAWAMATA
 
-* Docs: English documentation: Various minor fixes to README.md. [#1663](https://github.com/sinatra/sinatra/pull/1663) by Yanis Zafirópulos
+* Docs: English documentation: Various minor fixes to README.md. [#1663](https://github.com/muren/muren/pull/1663) by Yanis Zafirópulos
 
-* Docs: English documentation: Document when `dump_errors` is enabled. Fixes [#1664](https://github.com/sinatra/sinatra/issues/1664) [#1665](https://github.com/sinatra/sinatra/pull/1665) by Patrik Ragnarsson
+* Docs: English documentation: Document when `dump_errors` is enabled. Fixes [#1664](https://github.com/muren/muren/issues/1664) [#1665](https://github.com/muren/muren/pull/1665) by Patrik Ragnarsson
 
-* Docs: Brazilian Portuguese documentation: Update README.pt-br.md with translation fixes. [#1668](https://github.com/sinatra/sinatra/pull/1668) by Vitor Oliveira
+* Docs: Brazilian Portuguese documentation: Update README.pt-br.md with translation fixes. [#1668](https://github.com/muren/muren/pull/1668) by Vitor Oliveira
 
 ### CI
 
-* Use latest JRuby 9.2.16.0 on CI. [#1682](https://github.com/sinatra/sinatra/pull/1682) by Olle Jonsson
+* Use latest JRuby 9.2.16.0 on CI. [#1682](https://github.com/muren/muren/pull/1682) by Olle Jonsson
 
-* Switch CI from travis to GitHub Actions. [#1691](https://github.com/sinatra/sinatra/pull/1691) by namusyaka
+* Switch CI from travis to GitHub Actions. [#1691](https://github.com/muren/muren/pull/1691) by namusyaka
 
-* Skip the Slack action if `secrets.SLACK_WEBHOOK` is not set. [#1705](https://github.com/sinatra/sinatra/pull/1705) by Robin Wallin
+* Skip the Slack action if `secrets.SLACK_WEBHOOK` is not set. [#1705](https://github.com/muren/muren/pull/1705) by Robin Wallin
 
-* Small CI improvements. [#1703](https://github.com/sinatra/sinatra/pull/1703) by Robin Wallin
+* Small CI improvements. [#1703](https://github.com/muren/muren/pull/1703) by Robin Wallin
 
-* Drop auto-generated boilerplate comments from CI configuration file. [#1728](https://github.com/sinatra/sinatra/pull/1728) by Olle Jonsson
+* Drop auto-generated boilerplate comments from CI configuration file. [#1728](https://github.com/muren/muren/pull/1728) by Olle Jonsson
 
-### sinatra-contrib
+### muren-contrib
 
-* Do not raise when key is an enumerable. [#1619](https://github.com/sinatra/sinatra/pull/1619) by Ulysse Buonomo
+* Do not raise when key is an enumerable. [#1619](https://github.com/muren/muren/pull/1619) by Ulysse Buonomo
 
 ### Rack protection
 
-* Fix broken `origin_whitelist` option. Fixes [#1641](https://github.com/sinatra/sinatra/issues/1641) [#1642](https://github.com/sinatra/sinatra/pull/1642) by Takeshi YASHIRO
+* Fix broken `origin_whitelist` option. Fixes [#1641](https://github.com/muren/muren/issues/1641) [#1642](https://github.com/muren/muren/pull/1642) by Takeshi YASHIRO
 
 ## 2.1.0 / 2020-09-05
 
-* Fix additional Ruby 2.7 keyword warnings [#1586](https://github.com/sinatra/sinatra/pull/1586) by Stefan Sundin
+* Fix additional Ruby 2.7 keyword warnings [#1586](https://github.com/muren/muren/pull/1586) by Stefan Sundin
 
-* Drop Ruby 2.2 support [#1455](https://github.com/sinatra/sinatra/pull/1455) by Eloy Pérez
+* Drop Ruby 2.2 support [#1455](https://github.com/muren/muren/pull/1455) by Eloy Pérez
 
-* Add Rack::Protection::ReferrerPolicy [#1291](https://github.com/sinatra/sinatra/pull/1291) by Stefan Sundin
+* Add Rack::Protection::ReferrerPolicy [#1291](https://github.com/muren/muren/pull/1291) by Stefan Sundin
 
-* Add `default_content_type` setting. Fixes [#1238](https://github.com/sinatra/sinatra/pull/1238) [#1239](https://github.com/sinatra/sinatra/pull/1239) by Mike Pastore
+* Add `default_content_type` setting. Fixes [#1238](https://github.com/muren/muren/pull/1238) [#1239](https://github.com/muren/muren/pull/1239) by Mike Pastore
 
-* Allow `set :<engine>` in sinatra-namespace [#1255](https://github.com/sinatra/sinatra/pull/1255) by Christian Höppner
+* Allow `set :<engine>` in muren-namespace [#1255](https://github.com/muren/muren/pull/1255) by Christian Höppner
 
-* Use prepend instead of include for helpers. Fixes [#1213](https://github.com/sinatra/sinatra/pull/1213) [#1214](https://github.com/sinatra/sinatra/pull/1214) by Mike Pastore
+* Use prepend instead of include for helpers. Fixes [#1213](https://github.com/muren/muren/pull/1213) [#1214](https://github.com/muren/muren/pull/1214) by Mike Pastore
 
-* Fix issue with passed routes and provides Fixes [#1095](https://github.com/sinatra/sinatra/pull/1095) [#1606](https://github.com/sinatra/sinatra/pull/1606) by Mike Pastore, Jordan Owens
+* Fix issue with passed routes and provides Fixes [#1095](https://github.com/muren/muren/pull/1095) [#1606](https://github.com/muren/muren/pull/1606) by Mike Pastore, Jordan Owens
 
-* Add QuietLogger that excludes paths from Rack::CommonLogger [1250](https://github.com/sinatra/sinatra/pull/1250) by Christoph Wagner
+* Add QuietLogger that excludes paths from Rack::CommonLogger [1250](https://github.com/muren/muren/pull/1250) by Christoph Wagner
 
-* Sinatra::Contrib dependency updates. Fixes [#1207](https://github.com/sinatra/sinatra/pull/1207) [#1411](https://github.com/sinatra/sinatra/pull/1411) by Mike Pastore
+* Müren::Contrib dependency updates. Fixes [#1207](https://github.com/muren/muren/pull/1207) [#1411](https://github.com/muren/muren/pull/1411) by Mike Pastore
 
-* Allow CSP to fallback to default-src. Fixes [#1484](https://github.com/sinatra/sinatra/pull/1484) [#1490](https://github.com/sinatra/sinatra/pull/1490) by Jordan Owens
+* Allow CSP to fallback to default-src. Fixes [#1484](https://github.com/muren/muren/pull/1484) [#1490](https://github.com/muren/muren/pull/1490) by Jordan Owens
 
-* Replace `origin_whitelist` with `permitted_origins`. Closes [#1620](https://github.com/sinatra/sinatra/issues/1620) [#1625](https://github.com/sinatra/sinatra/pull/1625) by rhymes
+* Replace `origin_whitelist` with `permitted_origins`. Closes [#1620](https://github.com/muren/muren/issues/1620) [#1625](https://github.com/muren/muren/pull/1625) by rhymes
 
-* Use Rainbows instead of thin for async/stream features. Closes [#1624](https://github.com/sinatra/sinatra/issues/1624) [#1627](https://github.com/sinatra/sinatra/pull/1627) by Ryuichi KAWAMATA
+* Use Rainbows instead of thin for async/stream features. Closes [#1624](https://github.com/muren/muren/issues/1624) [#1627](https://github.com/muren/muren/pull/1627) by Ryuichi KAWAMATA
 
-* Enable EscapedParams if passed via settings. Closes [#1615](https://github.com/sinatra/sinatra/issues/1615) [#1632](https://github.com/sinatra/sinatra/issues/1632) by Anders Bälter
+* Enable EscapedParams if passed via settings. Closes [#1615](https://github.com/muren/muren/issues/1615) [#1632](https://github.com/muren/muren/issues/1632) by Anders Bälter
 
-* Support for parameters in mime types. Fixes [#1141](https://github.com/sinatra/sinatra/issues/1141) by John Hope
+* Support for parameters in mime types. Fixes [#1141](https://github.com/muren/muren/issues/1141) by John Hope
 
-* Handle null byte when serving static files [#1574](https://github.com/sinatra/sinatra/issues/1574) by Kush Fanikiso
+* Handle null byte when serving static files [#1574](https://github.com/muren/muren/issues/1574) by Kush Fanikiso
 
 * Improve development support and documentation and source code by Olle Jonsson, Pierre-Adrien Buisson, Shota Iguchi
 
 ## 2.0.8.1 / 2020-01-02
 
-* Allow multiple hashes to be passed in `merge` and `merge!` for `Sinatra::IndifferentHash` [#1572](https://github.com/sinatra/sinatra/pull/1572) by Shota Iguchi
+* Allow multiple hashes to be passed in `merge` and `merge!` for `Müren::IndifferentHash` [#1572](https://github.com/muren/muren/pull/1572) by Shota Iguchi
 
 ## 2.0.8 / 2020-01-01
 
-* Lookup Tilt class for template engine without loading files [#1558](https://github.com/sinatra/sinatra/pull/1558). Fixes [#1172](https://github.com/sinatra/sinatra/issues/1172) by Jordan Owens
+* Lookup Tilt class for template engine without loading files [#1558](https://github.com/muren/muren/pull/1558). Fixes [#1172](https://github.com/muren/muren/issues/1172) by Jordan Owens
 
-* Add request info in NotFound exception [#1566](https://github.com/sinatra/sinatra/pull/1566) by Stefan Sundin
+* Add request info in NotFound exception [#1566](https://github.com/muren/muren/pull/1566) by Stefan Sundin
 
-* Add `.yaml` support in `Sinatra::Contrib::ConfigFile` [#1564](https://github.com/sinatra/sinatra/issues/1564). Fixes [#1563](https://github.com/sinatra/sinatra/issues/1563) by Emerson Manabu Araki
+* Add `.yaml` support in `Müren::Contrib::ConfigFile` [#1564](https://github.com/muren/muren/issues/1564). Fixes [#1563](https://github.com/muren/muren/issues/1563) by Emerson Manabu Araki
 
-* Remove only routing parameters from @params hash [#1569](https://github.com/sinatra/sinatra/pull/1569). Fixes [#1567](https://github.com/sinatra/sinatra/issues/1567) by Jordan Owens, Horacio
+* Remove only routing parameters from @params hash [#1569](https://github.com/muren/muren/pull/1569). Fixes [#1567](https://github.com/muren/muren/issues/1567) by Jordan Owens, Horacio
 
-* Support `capture` and `content_for` with Hamlit [#1580](https://github.com/sinatra/sinatra/pull/1580) by Takashi Kokubun
+* Support `capture` and `content_for` with Hamlit [#1580](https://github.com/muren/muren/pull/1580) by Takashi Kokubun
 
-* Eliminate warnings of keyword parameter for Ruby 2.7.0 [#1581](https://github.com/sinatra/sinatra/pull/1581) by Osamtimizer
+* Eliminate warnings of keyword parameter for Ruby 2.7.0 [#1581](https://github.com/muren/muren/pull/1581) by Osamtimizer
 
 ## 2.0.7 / 2019-08-22
 
-* Fix a regression [#1560](https://github.com/sinatra/sinatra/pull/1560) by Kunpei Sakai
+* Fix a regression [#1560](https://github.com/muren/muren/pull/1560) by Kunpei Sakai
 
 ## 2.0.6 / 2019-08-21
 
-* Fix an issue setting environment from command line option [#1547](https://github.com/sinatra/sinatra/pull/1547), [#1554](https://github.com/sinatra/sinatra/pull/1554) by Jordan Owens, Kunpei Sakai
+* Fix an issue setting environment from command line option [#1547](https://github.com/muren/muren/pull/1547), [#1554](https://github.com/muren/muren/pull/1554) by Jordan Owens, Kunpei Sakai
 
-* Support pandoc as a new markdown renderer [#1533](https://github.com/sinatra/sinatra/pull/1533) by Vasiliy
+* Support pandoc as a new markdown renderer [#1533](https://github.com/muren/muren/pull/1533) by Vasiliy
 
-* Remove outdated code for tilt 1.x [#1532](https://github.com/sinatra/sinatra/pull/1532) by Vasiliy
+* Remove outdated code for tilt 1.x [#1532](https://github.com/muren/muren/pull/1532) by Vasiliy
 
-* Remove an extra logic for `force_encoding` [#1527](https://github.com/sinatra/sinatra/pull/1527) by Jordan Owens
+* Remove an extra logic for `force_encoding` [#1527](https://github.com/muren/muren/pull/1527) by Jordan Owens
 
-* Avoid multiple errors even if `params` contains special values [#1526](https://github.com/sinatra/sinatra/pull/1527) by Kunpei Sakai
+* Avoid multiple errors even if `params` contains special values [#1526](https://github.com/muren/muren/pull/1527) by Kunpei Sakai
 
-* Support `bundler/inline` with `require 'sinatra'` integration [#1520](https://github.com/sinatra/sinatra/pull/1520) by Kunpei Sakai
+* Support `bundler/inline` with `require 'muren'` integration [#1520](https://github.com/muren/muren/pull/1520) by Kunpei Sakai
 
-* Avoid `TypeError` when params contain a key without a value on Ruby < 2.4 [#1516](https://github.com/sinatra/sinatra/pull/1516) by Samuel Giddins
+* Avoid `TypeError` when params contain a key without a value on Ruby < 2.4 [#1516](https://github.com/muren/muren/pull/1516) by Samuel Giddins
 
 * Improve development support and documentation and source code by  Olle Jonsson, Basavanagowda Kanur, Yuki MINAMIYA
 
 ## 2.0.5 / 2018-12-22
 
-* Avoid FrozenError when params contains frozen value [#1506](https://github.com/sinatra/sinatra/pull/1506) by Kunpei Sakai
+* Avoid FrozenError when params contains frozen value [#1506](https://github.com/muren/muren/pull/1506) by Kunpei Sakai
 
-* Add support for Erubi [#1494](https://github.com/sinatra/sinatra/pull/1494) by @tkmru
+* Add support for Erubi [#1494](https://github.com/muren/muren/pull/1494) by @tkmru
 
-* `IndifferentHash` monkeypatch warning improvements [#1477](https://github.com/sinatra/sinatra/pull/1477) by Mike Pastore
+* `IndifferentHash` monkeypatch warning improvements [#1477](https://github.com/muren/muren/pull/1477) by Mike Pastore
 
 * Improve development support and documentation and source code by Anusree Prakash, Jordan Owens, @ceclinux and @krororo.
 
-### sinatra-contrib
+### muren-contrib
 
-* Add `flush` option to `content_for` [#1225](https://github.com/sinatra/sinatra/pull/1225) by Shota Iguchi
+* Add `flush` option to `content_for` [#1225](https://github.com/muren/muren/pull/1225) by Shota Iguchi
 
-* Drop activesupport dependency from sinatra-contrib [#1448](https://github.com/sinatra/sinatra/pull/1448)
+* Drop activesupport dependency from muren-contrib [#1448](https://github.com/muren/muren/pull/1448)
 
-* Update `yield_content` to append default to ERB template buffer [#1500](https://github.com/sinatra/sinatra/pull/1500) by Jordan Owens
+* Update `yield_content` to append default to ERB template buffer [#1500](https://github.com/muren/muren/pull/1500) by Jordan Owens
 
 ### rack-protection
 
-* Don't track the Accept-Language header by default [#1504](https://github.com/sinatra/sinatra/pull/1504) by Artem Chistyakov
+* Don't track the Accept-Language header by default [#1504](https://github.com/muren/muren/pull/1504) by Artem Chistyakov
 
 ## 2.0.4 / 2018-09-15
 
-* Don't blow up when passing frozen string to `send_file` disposition [#1137](https://github.com/sinatra/sinatra/pull/1137) by Andrew Selder
+* Don't blow up when passing frozen string to `send_file` disposition [#1137](https://github.com/muren/muren/pull/1137) by Andrew Selder
 
-* Fix ubygems LoadError [#1436](https://github.com/sinatra/sinatra/pull/1436) by Pavel Rosický
+* Fix ubygems LoadError [#1436](https://github.com/muren/muren/pull/1436) by Pavel Rosický
 
-* Unescape regex captures [#1446](https://github.com/sinatra/sinatra/pull/1446) by Jordan Owens
+* Unescape regex captures [#1446](https://github.com/muren/muren/pull/1446) by Jordan Owens
 
-* Slight performance improvements for IndifferentHash [#1427](https://github.com/sinatra/sinatra/pull/1427) by Mike Pastore
+* Slight performance improvements for IndifferentHash [#1427](https://github.com/muren/muren/pull/1427) by Mike Pastore
 
 * Improve development support and documentation and source code by Will Yang, Jake Craige, Grey Baker and Guilherme Goettems Schneider
 
 ## 2.0.3 / 2018-06-09
 
-* Fix the backports gem regression [#1442](https://github.com/sinatra/sinatra/issues/1442) by Marc-André Lafortune
+* Fix the backports gem regression [#1442](https://github.com/muren/muren/issues/1442) by Marc-André Lafortune
 
 ## 2.0.2 / 2018-06-05
 
-* Escape invalid query parameters [#1432](https://github.com/sinatra/sinatra/issues/1432) by Kunpei Sakai
+* Escape invalid query parameters [#1432](https://github.com/muren/muren/issues/1432) by Kunpei Sakai
   * The patch fixes [CVE-2018-11627](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11627).
 
-* Fix undefined method error for `Sinatra::RequiredParams` with hash key [#1431](https://github.com/sinatra/sinatra/issues/1431) by Arpit Chauhan
+* Fix undefined method error for `Müren::RequiredParams` with hash key [#1431](https://github.com/muren/muren/issues/1431) by Arpit Chauhan
 
-* Add xml content-types to valid html_types for Rack::Protection [#1413](https://github.com/sinatra/sinatra/issues/1413) by Reenan Arbitrario
+* Add xml content-types to valid html_types for Rack::Protection [#1413](https://github.com/muren/muren/issues/1413) by Reenan Arbitrario
 
-* Encode route parameters using :default_encoding setting [#1412](https://github.com/sinatra/sinatra/issues/1412) by Brian m. Carlson
+* Encode route parameters using :default_encoding setting [#1412](https://github.com/muren/muren/issues/1412) by Brian m. Carlson
 
-* Fix unpredictable behaviour from Sinatra::ConfigFile [#1244](https://github.com/sinatra/sinatra/issues/1244) by John Hope
+* Fix unpredictable behaviour from Müren::ConfigFile [#1244](https://github.com/muren/muren/issues/1244) by John Hope
 
-* Add Sinatra::IndifferentHash#slice [#1405](https://github.com/sinatra/sinatra/issues/1405) by Shota Iguchi
+* Add Müren::IndifferentHash#slice [#1405](https://github.com/muren/muren/issues/1405) by Shota Iguchi
 
-* Remove status code 205 from drop body response [#1398](https://github.com/sinatra/sinatra/issues/1398) by Shota Iguchi
+* Remove status code 205 from drop body response [#1398](https://github.com/muren/muren/issues/1398) by Shota Iguchi
 
-* Ignore empty captures from params [#1390](https://github.com/sinatra/sinatra/issues/1390) by Shota Iguchi
+* Ignore empty captures from params [#1390](https://github.com/muren/muren/issues/1390) by Shota Iguchi
 
 * Improve development support and documentation and source code by Zp Yuan, Andreas Finger, Olle Jonsson, Shota Iguchi, Nikita Bulai and Joshua O'Brien
 
 ## 2.0.1 / 2018-02-17
 
-* Repair nested namespaces, by avoiding prefix duplication [#1322](https://github.com/sinatra/sinatra/issues/1322). Fixes [#1310](https://github.com/sinatra/sinatra/issues/1310) by Kunpei Sakai
+* Repair nested namespaces, by avoiding prefix duplication [#1322](https://github.com/muren/muren/issues/1322). Fixes [#1310](https://github.com/muren/muren/issues/1310) by Kunpei Sakai
 
-* Add pattern matches to values for Mustermann::Concat [#1333](https://github.com/sinatra/sinatra/issues/1333). Fixes [#1332](https://github.com/sinatra/sinatra/issues/1332) by Dawa Ometto
+* Add pattern matches to values for Mustermann::Concat [#1333](https://github.com/muren/muren/issues/1333). Fixes [#1332](https://github.com/muren/muren/issues/1332) by Dawa Ometto
 
-* Ship the VERSION file with the gem, to allow local unpacking [#1338](https://github.com/sinatra/sinatra/issues/1338) by Olle Jonsson
+* Ship the VERSION file with the gem, to allow local unpacking [#1338](https://github.com/muren/muren/issues/1338) by Olle Jonsson
 
-* Fix issue with custom error handler on bad request [#1351](https://github.com/sinatra/sinatra/issues/1351). Fixes [#1350](https://github.com/sinatra/sinatra/issues/1350) by Jordan Owens
+* Fix issue with custom error handler on bad request [#1351](https://github.com/muren/muren/issues/1351). Fixes [#1350](https://github.com/muren/muren/issues/1350) by Jordan Owens
 
-* Override Rack::ShowExceptions#pretty to set custom template [#1377](https://github.com/sinatra/sinatra/issues/1377). Fixes [#1376](https://github.com/sinatra/sinatra/issues/1376) by Jordan Owens
+* Override Rack::ShowExceptions#pretty to set custom template [#1377](https://github.com/muren/muren/issues/1377). Fixes [#1376](https://github.com/muren/muren/issues/1376) by Jordan Owens
 
-* Enhanced path validation in Windows [#1379](https://github.com/sinatra/sinatra/issues/1379) by Orange Tsai from DEVCORE
+* Enhanced path validation in Windows [#1379](https://github.com/muren/muren/issues/1379) by Orange Tsai from DEVCORE
   * The patch fixes [CVE-2018-7212](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7212)
 
 * Improve development support and documentation by Faheel Ahmad, Shota Iguchi, Olle Jonsson, Manabu Niseki, John Hope, Horacio, Ice-Storm, GraniteRock, Raman Skaskevich, Carlos Azuaje, 284km, Dan Rice and Zachary Scott
 
 ## 2.0.0 / 2017-04-10
 
- * Use Mustermann for patterns [#1086](https://github.com/sinatra/sinatra/issues/1086) by Konstantin Haase
+ * Use Mustermann for patterns [#1086](https://github.com/muren/muren/issues/1086) by Konstantin Haase
 
- * Server now provides `-q` flag for quiet mode, which disables start/stop messages [#1153](https://github.com/sinatra/sinatra/issues/1153) by Vasiliy.
+ * Server now provides `-q` flag for quiet mode, which disables start/stop messages [#1153](https://github.com/muren/muren/issues/1153) by Vasiliy.
 
- * Session middleware can now be specified with `:session_store` setting [#1161](https://github.com/sinatra/sinatra/issues/1161) by Jordan Owens.
+ * Session middleware can now be specified with `:session_store` setting [#1161](https://github.com/muren/muren/issues/1161) by Jordan Owens.
 
- * `APP_ENV` is now preferred and recommended over `RACK_ENV` for setting environment [#984](https://github.com/sinatra/sinatra/issues/984) by Damien Mathieu.
+ * `APP_ENV` is now preferred and recommended over `RACK_ENV` for setting environment [#984](https://github.com/muren/muren/issues/984) by Damien Mathieu.
 
- * Add Reel support [#793](https://github.com/sinatra/sinatra/issues/793) by Patricio Mac Adden.
+ * Add Reel support [#793](https://github.com/muren/muren/issues/793) by Patricio Mac Adden.
 
- * Make route params available during error handling [#895](https://github.com/sinatra/sinatra/issues/895) by Jeremy Evans.
+ * Make route params available during error handling [#895](https://github.com/muren/muren/issues/895) by Jeremy Evans.
 
- * Unify `not_found` and `error` 404 behavior [#896](https://github.com/sinatra/sinatra/issues/896) by Jeremy Evans.
+ * Unify `not_found` and `error` 404 behavior [#896](https://github.com/muren/muren/issues/896) by Jeremy Evans.
 
- * Enable Ruby 2.3 `frozen_string_literal` feature [#1076](https://github.com/sinatra/sinatra/issues/1076) by Vladimir Kochnev.
+ * Enable Ruby 2.3 `frozen_string_literal` feature [#1076](https://github.com/muren/muren/issues/1076) by Vladimir Kochnev.
 
- * Add Sinatra::ShowExceptions::TEMPLATE and patched Rack::ShowExceptions to prefer Sinatra template by Zachary Scott.
+ * Add Müren::ShowExceptions::TEMPLATE and patched Rack::ShowExceptions to prefer Müren template by Zachary Scott.
 
- * Sinatra::Runner is used internally for integration tests [#840](https://github.com/sinatra/sinatra/issues/840) by Nick Sutterer.
+ * Müren::Runner is used internally for integration tests [#840](https://github.com/muren/muren/issues/840) by Nick Sutterer.
 
- * Fix case-sensitivity issue in `uri` method [#889](https://github.com/sinatra/sinatra/issues/889) by rennex.
+ * Fix case-sensitivity issue in `uri` method [#889](https://github.com/muren/muren/issues/889) by rennex.
 
- * Use `Rack::Utils.status_code` to allow `status` helper to use symbol as well as numeric codes [#968](https://github.com/sinatra/sinatra/issues/968) by Tobias H. Michaelsen.
+ * Use `Rack::Utils.status_code` to allow `status` helper to use symbol as well as numeric codes [#968](https://github.com/muren/muren/issues/968) by Tobias H. Michaelsen.
 
- * Improved error handling for invalid params through Rack [#1070](https://github.com/sinatra/sinatra/issues/1070) by Jordan Owens.
+ * Improved error handling for invalid params through Rack [#1070](https://github.com/muren/muren/issues/1070) by Jordan Owens.
 
- * Ensure template is cached only once [#1021](https://github.com/sinatra/sinatra/issues/1021) by Patrik Rak.
+ * Ensure template is cached only once [#1021](https://github.com/muren/muren/issues/1021) by Patrik Rak.
 
- * Rack middleware is initialized at server runtime rather than after receiving first request [#1205](https://github.com/sinatra/sinatra/issues/1205) by Itamar Turner-Trauring.
+ * Rack middleware is initialized at server runtime rather than after receiving first request [#1205](https://github.com/muren/muren/issues/1205) by Itamar Turner-Trauring.
 
- * Improve Session Secret documentation to encourage better security practices [#1218](https://github.com/sinatra/sinatra/issues/1218) by Glenn Rempe
+ * Improve Session Secret documentation to encourage better security practices [#1218](https://github.com/muren/muren/issues/1218) by Glenn Rempe
 
- * Exposed global and per-route options for Mustermann route parsing [#1233](https://github.com/sinatra/sinatra/issues/1233) by Mike Pastore
+ * Exposed global and per-route options for Mustermann route parsing [#1233](https://github.com/muren/muren/issues/1233) by Mike Pastore
 
- * Use same `session_secret` for classic and modular apps in development [#1245](https://github.com/sinatra/sinatra/issues/1245) by Marcus Stollsteimer
+ * Use same `session_secret` for classic and modular apps in development [#1245](https://github.com/muren/muren/issues/1245) by Marcus Stollsteimer
 
- * Make authenticity token length a fixed value of 32 [#1181](https://github.com/sinatra/sinatra/issues/1181) by Jordan Owens
+ * Make authenticity token length a fixed value of 32 [#1181](https://github.com/muren/muren/issues/1181) by Jordan Owens
 
- * Modernize Rack::Protection::ContentSecurityPolicy with CSP Level 2 and 3 Directives [#1202](https://github.com/sinatra/sinatra/issues/1202) by Glenn Rempe
+ * Modernize Rack::Protection::ContentSecurityPolicy with CSP Level 2 and 3 Directives [#1202](https://github.com/muren/muren/issues/1202) by Glenn Rempe
 
- * Adds preload option to Rack:Protection:StrictTransport [#1209](https://github.com/sinatra/sinatra/issues/1209) by Ed Robinson
+ * Adds preload option to Rack:Protection:StrictTransport [#1209](https://github.com/muren/muren/issues/1209) by Ed Robinson
 
- * Improve BadRequest logic. Raise and handle exceptions if status is 400 [#1212](https://github.com/sinatra/sinatra/issues/1212) by Mike Pastore
+ * Improve BadRequest logic. Raise and handle exceptions if status is 400 [#1212](https://github.com/muren/muren/issues/1212) by Mike Pastore
 
- * Make Rack::Test a development dependency [#1232](https://github.com/sinatra/sinatra/issues/1232) by Mike Pastore
+ * Make Rack::Test a development dependency [#1232](https://github.com/muren/muren/issues/1232) by Mike Pastore
 
- * Capture exception messages of raised NotFound and BadRequest [#1210](https://github.com/sinatra/sinatra/issues/1210) by Mike Pastore
+ * Capture exception messages of raised NotFound and BadRequest [#1210](https://github.com/muren/muren/issues/1210) by Mike Pastore
 
- * Add explicit set method to contrib/cookies to override cookie settings [#1240](https://github.com/sinatra/sinatra/issues/1240) by Andrew Allen
+ * Add explicit set method to contrib/cookies to override cookie settings [#1240](https://github.com/muren/muren/issues/1240) by Andrew Allen
 
- * Avoid executing filters even if prefix matches with other namespace [#1253](https://github.com/sinatra/sinatra/issues/1253) by namusyaka
+ * Avoid executing filters even if prefix matches with other namespace [#1253](https://github.com/muren/muren/issues/1253) by namusyaka
 
- * Make `#has_key?` also indifferent in access, can accept String or Symbol [#1262](https://github.com/sinatra/sinatra/issues/1262) by Stephen Paul Weber
+ * Make `#has_key?` also indifferent in access, can accept String or Symbol [#1262](https://github.com/muren/muren/issues/1262) by Stephen Paul Weber
 
- * Add `allow_if` option to bypass json csrf protection [#1265](https://github.com/sinatra/sinatra/issues/1265) by Jordan Owens
+ * Add `allow_if` option to bypass json csrf protection [#1265](https://github.com/muren/muren/issues/1265) by Jordan Owens
 
- * rack-protection: Bundle StrictTransport, CookieTossing, and CSP [#1267](https://github.com/sinatra/sinatra/issues/1267) by Mike Pastore
+ * rack-protection: Bundle StrictTransport, CookieTossing, and CSP [#1267](https://github.com/muren/muren/issues/1267) by Mike Pastore
 
- * Add `:strict_paths` option for managing trailing slashes [#1273](https://github.com/sinatra/sinatra/issues/1273) by namusyaka
+ * Add `:strict_paths` option for managing trailing slashes [#1273](https://github.com/muren/muren/issues/1273) by namusyaka
 
- * Add full IndifferentHash implementation to params [#1279](https://github.com/sinatra/sinatra/issues/1279) by Mike Pastore
+ * Add full IndifferentHash implementation to params [#1279](https://github.com/muren/muren/issues/1279) by Mike Pastore
 
 ## 1.4.8 / 2017-01-30
 
- * Fix the deprecation warning from Ruby about Fixnum. [#1235](https://github.com/sinatra/sinatra/issues/1235) by Akira Matsuda
+ * Fix the deprecation warning from Ruby about Fixnum. [#1235](https://github.com/muren/muren/issues/1235) by Akira Matsuda
 
 ## 1.4.7 / 2016-01-24
 
- * Add Ashley Williams, Trevor Bramble, and Kashyap Kondamudi to team Sinatra.
+ * Add Ashley Williams, Trevor Bramble, and Kashyap Kondamudi to team Müren.
 
  * Correctly handle encoded colons in routes. (Jeremy Evans)
 
- * Rename CHANGES to CHANGELOG.md and update Rakefile. [#1043](https://github.com/sinatra/sinatra/issues/1043) (Eliza Sorensen)
+ * Rename CHANGES to CHANGELOG.md and update Rakefile. [#1043](https://github.com/muren/muren/issues/1043) (Eliza Sorensen)
 
- * Improve documentation. [#941](https://github.com/sinatra/sinatra/issues/941), [#1069](https://github.com/sinatra/sinatra/issues/1069), [#1075](https://github.com/sinatra/sinatra/issues/1075), [#1025](https://github.com/sinatra/sinatra/issues/1025), [#1052](https://github.com/sinatra/sinatra/issues/1052) (Many great folks)
+ * Improve documentation. [#941](https://github.com/muren/muren/issues/941), [#1069](https://github.com/muren/muren/issues/1069), [#1075](https://github.com/muren/muren/issues/1075), [#1025](https://github.com/muren/muren/issues/1025), [#1052](https://github.com/muren/muren/issues/1052) (Many great folks)
 
- * Introduce `Sinatra::Ext` to workaround Rack 1.6 bug to fix Ruby 1.8.7
-   support. [#1080](https://github.com/sinatra/sinatra/issues/1080) (Zachary Scott)
+ * Introduce `Müren::Ext` to workaround Rack 1.6 bug to fix Ruby 1.8.7
+   support. [#1080](https://github.com/muren/muren/issues/1080) (Zachary Scott)
 
- * Add CONTRIBUTING guide. [#987](https://github.com/sinatra/sinatra/issues/987) (Katrina Owen)
+ * Add CONTRIBUTING guide. [#987](https://github.com/muren/muren/issues/987) (Katrina Owen)
 
 
 ## 1.4.6 / 2015-03-23
@@ -533,7 +533,7 @@
    Ruben Gonzalez, Andrey Deryabin, attilaolah, Anton Davydov, Nikita Penzin,
    Dyego Costa)
 
- * Remove duplicate require of sinatra/base. (Alexey Muranov)
+ * Remove duplicate require of muren/base. (Alexey Muranov)
 
  * Escape HTML in 404 error page. (Andy Brody)
 
@@ -590,7 +590,7 @@
 
  * Reduce objects allocated per request. (Vipul A M)
 
- * Drop unused, undocumented options hash from Sinatra.new. (George Timoschenko)
+ * Drop unused, undocumented options hash from Müren.new. (George Timoschenko)
 
  * Keep Content-Length header when response is a `Rack::File` or when streaming.
    (Patricio Mac Adden, George Timoschenko)
@@ -607,13 +607,13 @@
 
 ## 1.4.3 / 2013-06-07
 
- * Running a Sinatra file directly or via `run!` it will now ignore an
+ * Running a Müren file directly or via `run!` it will now ignore an
    empty $PORT env variable. (noxqsgit)
 
  * Improve documentation. (burningTyger, Patricio Mac Adden,
    Konstantin Haase, Diogo Scudelletti, Dominic Imhof)
 
- * Expose matched pattern as env["sinatra.route"]. (Aman Gupta)
+ * Expose matched pattern as env["muren.route"]. (Aman Gupta)
 
  * Fix warning on Ruby 2.0. (Craig Little)
 
@@ -654,7 +654,7 @@
  * You can now pass a block to ERb, Haml, Slim, Liquid and Wlang templates,
    which will be used when calling `yield` in the template. (Alexey Muranov)
 
- * When running in classic mode, no longer include Sinatra::Delegator in Object,
+ * When running in classic mode, no longer include Müren::Delegator in Object,
    instead extend the main object only. (Konstantin Haase)
 
  * Improved route parsing: "/:name.?:format?" with "/foo.png" now matches to
@@ -672,17 +672,17 @@
  * Status, headers and body will be set correctly in an after filter when using
    halt in a before filter or route. (Konstantin Haase)
 
- * Sinatra::Base.new now returns a Sinatra::Wrapper instance, exposing
+ * Müren::Base.new now returns a Müren::Wrapper instance, exposing
    `#settings` and `#helpers`, yet going through the middleware stack on
    `#call`.  It also implements a nice `#inspect`, so it plays nice with
    Rails' `rake routes`. (Konstantin Haase)
 
- * In addition to WebRick, Thin and Mongrel, Sinatra will now automatically pick
+ * In addition to WebRick, Thin and Mongrel, Müren will now automatically pick
    up Puma, Trinidad, ControlTower or Net::HTTP::Server when installed. The
    logic for picking the server has been improved and now depends on the Ruby
    implementation used. (Mark Rada, Konstantin Haase, Patricio Mac Adden)
 
- * "Sinatra doesn't know this ditty" pages now show the app class when running
+ * "Müren doesn't know this ditty" pages now show the app class when running
    a modular application. This helps detecting where the response came from when
    combining multiple modular apps. (Konstantin Haase)
 
@@ -787,7 +787,7 @@ Backported from 1.4.0:
 
  * Fix streaming with latest Rack release. (Konstantin Haase)
 
- * Fix default content type for Sinatra::Response with latest Rack release.
+ * Fix default content type for Müren::Response with latest Rack release.
    (Konstantin Haase)
 
  * Fix regression where + was no longer treated like space. (Ross Boucher)
@@ -876,13 +876,13 @@ Backported from 1.4.0:
  * Support for Creole templates, Creole is a standardized wiki markup,
    supported by many wiki implementations. (Konstanin Haase)
 
- * The `erubis` method has been deprecated. If Erubis is available, Sinatra
+ * The `erubis` method has been deprecated. If Erubis is available, Müren
    will automatically use it for rendering ERB templates. `require 'erb'`
    explicitly to prevent that behavior. (Magnus Holm, Ryan Tomayko, Konstantin
    Haase)
 
  * Patterns now match against the escaped URLs rather than the unescaped
-   version. This makes Sinatra confirm with RFC 2396 section 2.2 and RFC 2616
+   version. This makes Müren confirm with RFC 2396 section 2.2 and RFC 2616
    section 3.2.3 (escaped reserved characters should not be treated like the
    unescaped version), meaning that "/:name" will also match `/foo%2Fbar`, but
    not `/foo/bar`. To avoid incompatibility, pattern matching has been
@@ -890,7 +890,7 @@ Backported from 1.4.0:
    of path_info around, we handle all changes to `env['PATH_INFO']` correctly.
    (Konstantin Haase)
 
- * `settings.app_file` now defaults to the file subclassing `Sinatra::Base` in
+ * `settings.app_file` now defaults to the file subclassing `Müren::Base` in
    modular applications. (Konstantin Haase)
 
  * Set up `Rack::Logger` or `Rack::NullLogger` depending on whether logging
@@ -909,7 +909,7 @@ Backported from 1.4.0:
    warning. (Konstantin Haase)
 
  * It is now possible to use a different target class for the top level DSL
-   (aka classic style) than `Sinatra::Application` by setting
+   (aka classic style) than `Müren::Application` by setting
    `Delegator.target`. This was mainly introduced to ease testing. (Konstantin
    Haase)
 
@@ -946,10 +946,10 @@ Backported from 1.4.0:
 
  * Added support for If-Unmodified-Since header. (Konstantin Haase)
 
- * `Sinatra::Base.run!` now prints to stderr rather than stdout. (Andrew
+ * `Müren::Base.run!` now prints to stderr rather than stdout. (Andrew
    Armenia)
 
- * `Sinatra::Base.run!` takes a block allowing access to the Rack handler.
+ * `Müren::Base.run!` takes a block allowing access to the Rack handler.
    (David Waite)
 
  * Automatic `app_file` detection now works in directories containing brackets
@@ -963,20 +963,20 @@ Backported from 1.4.0:
  * Also specify charset in Content-Type header for JSON. (Konstantin Haase)
 
  * Rack handler names will not be converted to lower case internally, this
-   allows you to run Sinatra with custom Rack handlers, like Kirk or Mongrel2.
+   allows you to run Müren with custom Rack handlers, like Kirk or Mongrel2.
    Example: `ruby app.rb -s Mongrel2` (Konstantin Haase)
 
  * Ignore `to_ary` on response bodies. Fixes compatibility to Rails 3.1.
    (Konstantin Haase)
 
  * Middleware setup is now distributed across multiple methods, allowing
-   Sinatra extensions to easily hook into the setup process. (Konstantin
+   Müren extensions to easily hook into the setup process. (Konstantin
    Haase)
 
  * Internal refactoring and minor performance improvements. (Konstantin Haase)
 
- * Move Sinatra::VERSION to separate file, so it can be checked without
-   loading Sinatra. (Konstantin Haase)
+ * Move Müren::VERSION to separate file, so it can be checked without
+   loading Müren. (Konstantin Haase)
 
  * Command line options now complain if value passed to `-p` is not a valid
    integer. (Konstantin Haase)
@@ -988,7 +988,7 @@ Backported from 1.4.0:
 
 IMPORTANT: THIS IS THE LAST 1.2.x RELEASE, PLEASE UPGRADE.
 
- * Display EOL warning when loading Sinatra. (Konstantin Haase)
+ * Display EOL warning when loading Müren. (Konstantin Haase)
 
  * Improve documentation. (Anurag Priyam, Konstantin Haase)
 
@@ -1016,7 +1016,7 @@ Backported from 1.3.0:
  * Ignore `to_ary` on response bodies. Fixes compatibility to Rails 3.1.
    (Konstantin Haase)
 
- * `Sinatra.run!` now prints to stderr rather than stdout. (Andrew Armenia)
+ * `Müren.run!` now prints to stderr rather than stdout. (Andrew Armenia)
 
  * Automatic `app_file` detection now works in directories containing brackets
    (Konstantin Haase)
@@ -1027,7 +1027,7 @@ Backported from 1.3.0:
  * Also specify charset in Content-Type header for JSON. (Konstantin Haase)
 
  * Rack handler names will not be converted to lower case internally, this
-   allows you to run Sinatra with custom Rack handlers, like Kirk or Mongrel2.
+   allows you to run Müren with custom Rack handlers, like Kirk or Mongrel2.
    Example: `ruby app.rb -s Mongrel2` (Konstantin Haase)
 
  * Fix uninitialized instance variable warning. (David Kellum)
@@ -1040,7 +1040,7 @@ Backported from 1.3.0:
 
 ## 1.2.6 / 2011-05-01
 
- * Fix broken delegation, backport delegation tests from Sinatra 1.3.
+ * Fix broken delegation, backport delegation tests from Müren 1.3.
    (Konstantin Haase)
 
 ## 1.2.5 / 2011-04-30
@@ -1049,21 +1049,21 @@ Backported from 1.3.0:
 
 ## 1.2.4 / 2011-04-30
 
- * Sinatra::Application (classic style) does not use a session secret in
+ * Müren::Application (classic style) does not use a session secret in
    development mode, so sessions are not invalidated after every request when
    using Shotgun. (Konstantin Haase)
 
- * The request object was shared between multiple Sinatra instances in the
-   same middleware chain. This caused issues if any non-sinatra routing
+ * The request object was shared between multiple Müren instances in the
+   same middleware chain. This caused issues if any non-muren routing
    happened in-between two of those instances, or running a request twice
    against an application (described in the README). The caching was reverted.
-   See GH[#239](https://github.com/sinatra/sinatra/issues/239) and GH[#256](https://github.com/sinatra/sinatra/issues/256) for more infos. (Konstantin Haase)
+   See GH[#239](https://github.com/muren/muren/issues/239) and GH[#256](https://github.com/muren/muren/issues/256) for more infos. (Konstantin Haase)
 
  * Fixes issues where the top level DSL was interfering with method_missing
    proxies. This issue surfaced when Rails 3 was used with older Sass versions
-   and Sinatra >= 1.2.0. (Konstantin Haase)
+   and Müren >= 1.2.0. (Konstantin Haase)
 
- * Sinatra::Delegator.delegate is now able to delegate any method names, even
+ * Müren::Delegator.delegate is now able to delegate any method names, even
    those containing special characters. This allows better integration into
    other programming languages on Rubinius (probably on the JVM, too), like
    Fancy. (Konstantin Haase)
@@ -1075,7 +1075,7 @@ Backported from 1.3.0:
 
  * This release is compatible with Tilt 1.3, it will still work with Tilt 1.2.2,
    however, if you want to use a newer Tilt version, you have to upgrade to at
-   least this version of Sinatra. (Konstantin Haase)
+   least this version of Müren. (Konstantin Haase)
 
  * Helpers dealing with time, like `expires`, handle objects that pretend to be
    numbers, like `ActiveSupport::Duration`, better. (Konstantin Haase)
@@ -1167,7 +1167,7 @@ Backported from 1.3.0:
 
  * Skip missing template engines in tests correctly. (cactus)
 
- * Sinatra now ships with a Gemfile for development dependencies, since it eases
+ * Müren now ships with a Gemfile for development dependencies, since it eases
    supporting different platforms, like JRuby. (Konstantin Haase)
 
 ## 1.1.4 (backports release) / 2011-04-13
@@ -1210,7 +1210,7 @@ Like 1.1.1, but with proper CHANGES file.
    will be honored. (Konstantin Haase)
 
  * Default `app_file` is set correctly when running with bundler. Using
-   bundler caused Sinatra not to find the `app_file` and therefore not to find
+   bundler caused Müren not to find the `app_file` and therefore not to find
    the `views` folder on it's own. (Konstantin Haase)
 
  * Better handling of Content-Type when using `send_file`: If file extension
@@ -1262,7 +1262,7 @@ Like 1.1.1, but with proper CHANGES file.
    `layout` explicitly is still possible. (Konstantin Haase)
 
  * If a the return value of one of the render functions is used as a response
-   body and the content type has not been set explicitly, Sinatra chooses a
+   body and the content type has not been set explicitly, Müren chooses a
    content type corresponding to the rendering engine rather than just using
    "text/html". (Konstantin Haase)
 
@@ -1271,7 +1271,7 @@ Like 1.1.1, but with proper CHANGES file.
    Hardi) and Spanish (Gabriel Andretta). The extremely outdated Japanese
    README has been updated (Kouhei Yanagita).
 
- * It is now possible to access Sinatra's template_cache from the outside.
+ * It is now possible to access Müren's template_cache from the outside.
    (Nick Sutterer)
 
  * The `last_modified` method now also accepts DateTime instances and makes
@@ -1279,7 +1279,7 @@ Like 1.1.1, but with proper CHANGES file.
 
  * 599 now is a legal status code. (Steve Shreeve)
 
- * This release is compatible with Ruby 1.9.2. Sinatra was trying to read
+ * This release is compatible with Ruby 1.9.2. Müren was trying to read
    non existent files Ruby added to the call stack. (Shota Fukumori,
    Konstantin Haase)
 
@@ -1293,7 +1293,7 @@ Like 1.1.1, but with proper CHANGES file.
    Now, it halts when is equal or later than the time specified (Gabriel
    Andretta).
 
- * Sinatra is now usable in combination with Rails 3. When mounting a Sinatra
+ * Müren is now usable in combination with Rails 3. When mounting a Müren
    application under a subpath in Rails 3, the PATH_INFO is not prefixed with
    a slash and no routes did match. (José Valim)
 
@@ -1317,22 +1317,22 @@ Like 1.1.1, but with proper CHANGES file.
  * Broken examples for using Erubis, Haml and Test::Unit in README have been
    fixed. (Nick Sutterer, Doug Ireton, Jason Stewart, Eric Marden)
 
- * Sinatra now handles SIGTERM correctly. (Patrick Collison)
+ * Müren now handles SIGTERM correctly. (Patrick Collison)
 
  * Fixes an issue with inline templates in modular applications that manually
    call `run!`. (Konstantin Haase)
 
  * Spaces after inline template names are now ignored (Konstantin Haase)
 
- * It's now possible to use Sinatra with different package management
+ * It's now possible to use Müren with different package management
    systems defining a custom require. (Konstantin Haase)
 
  * Lighthouse has been dropped in favor of GitHub issues.
 
  * Tilt is now a dependency and therefore no longer ships bundled with
-   Sinatra. (Ryan Tomayko, Konstantin Haase)
+   Müren. (Ryan Tomayko, Konstantin Haase)
 
- * Sinatra now depends on Rack 1.1 or higher. Rack 1.0 is no longer supported.
+ * Müren now depends on Rack 1.1 or higher. Rack 1.0 is no longer supported.
    (Konstantin Haase)
 
 ## 1.0 / 2010-03-23
@@ -1341,7 +1341,7 @@ Like 1.1.1, but with proper CHANGES file.
    after filters. After filters run at the end of each request, after
    routes and error handlers. (Jimmy Schementi)
 
- * Sinatra now uses Tilt <http://github.com/rtomayko/tilt> for rendering
+ * Müren now uses Tilt <http://github.com/rtomayko/tilt> for rendering
    templates. This adds support for template caching, consistent
    template backtraces, and support for new template engines, like
    mustache and liquid. (Ryan Tomayko)
@@ -1376,7 +1376,7 @@ Like 1.1.1, but with proper CHANGES file.
  * New request.secure? method for checking for an SSL connection.
    (Adam Wiggins)
 
- * Sinatra apps can now be run with a `-o <addr>` argument to specify
+ * Müren apps can now be run with a `-o <addr>` argument to specify
    the address to bind to. (Ryan Tomayko)
 
  * Rack::Session::Cookie is now added to the middleware pipeline when
@@ -1386,7 +1386,7 @@ Like 1.1.1, but with proper CHANGES file.
  * Route handlers, before filters, templates, error mappings, and
    middleware are now resolved dynamically up the inheritance hierarchy
    when needed instead of duplicating the superclass's version when
-   a new Sinatra::Base subclass is created. This should fix a variety
+   a new Müren::Base subclass is created. This should fix a variety
    of issues with extensions that need to add any of these things
    to the base class. (Ryan Tomayko)
 
@@ -1405,22 +1405,22 @@ Like 1.1.1, but with proper CHANGES file.
  * pass takes an optional block to be used as the route handler if no
    subsequent route matches the request. (Blake Mizerany)
 
-The following Sinatra features have been obsoleted (removed entirely) in
+The following Müren features have been obsoleted (removed entirely) in
 the 1.0 release:
 
- * The `sinatra/test` library is obsolete. This includes the `Sinatra::Test`
-   module, the `Sinatra::TestHarness` class, and the `get_it`, `post_it`,
+ * The `muren/test` library is obsolete. This includes the `Müren::Test`
+   module, the `Müren::TestHarness` class, and the `get_it`, `post_it`,
    `put_it`, `delete_it`, and `head_it` helper methods. The
    [`Rack::Test` library](http://gitrdoc.com/brynary/rack-test) should
    be used instead.
 
- * Test framework specific libraries (`sinatra/test/spec`,
-   `sinatra/test/bacon`,`sinatra/test/rspec`, etc.) are obsolete. See
-   http://www.sinatrarb.com/testing.html for instructions on setting up a
+ * Test framework specific libraries (`muren/test/spec`,
+   `muren/test/bacon`,`muren/test/rspec`, etc.) are obsolete. See
+   http://www.murenrb.com/testing.html for instructions on setting up a
    testing environment under each of these frameworks.
 
- * `Sinatra::Default` is obsolete; use `Sinatra::Base` instead.
-   `Sinatra::Base` acts more like `Sinatra::Default` in development mode.
+ * `Müren::Default` is obsolete; use `Müren::Base` instead.
+   `Müren::Base` acts more like `Müren::Default` in development mode.
    For example, static file serving and sexy development error pages are
    enabled by default.
 
@@ -1444,9 +1444,9 @@ the 1.0 release:
 
  * The request-level `send_data` method is no longer supported.
 
- * The `Sinatra::Event` and `Sinatra::EventContext` classes are no longer
+ * The `Müren::Event` and `Müren::EventContext` classes are no longer
    supported. This may effect extensions written for versions prior to 0.9.2.
-   See [Writing Sinatra Extensions](http://www.sinatrarb.com/extensions.html)
+   See [Writing Müren Extensions](http://www.murenrb.com/extensions.html)
    for the officially supported extensions API.
 
  * The `set_option` and `set_options` methods are obsolete; use `set`
@@ -1463,15 +1463,15 @@ the 1.0 release:
  * The request level `headers` method (HTTP response headers) is obsolete;
    use `response['Header-Name']` instead.
 
- * `Sinatra.application` is obsolete; use `Sinatra::Application` instead.
+ * `Müren.application` is obsolete; use `Müren::Application` instead.
 
- * Using `Sinatra.application = nil` to reset an application is obsolete.
+ * Using `Müren.application = nil` to reset an application is obsolete.
    This should no longer be necessary.
 
- * Using `Sinatra.default_options` to set base configuration items is
-   obsolete; use `Sinatra::Base.set(key, value)` instead.
+ * Using `Müren.default_options` to set base configuration items is
+   obsolete; use `Müren::Base.set(key, value)` instead.
 
- * The `Sinatra::ServerError` exception is obsolete. All exceptions raised
+ * The `Müren::ServerError` exception is obsolete. All exceptions raised
    within a request are now treated as internal server errors and result in
    a 500 response status.
 
@@ -1511,9 +1511,9 @@ the 1.0 release:
    configure { |app| set :foo, app.root + '/foo' }
    [TJ Holowaychuck / Ryan Tomayko]
 
- * The "sinatra/test" lib is deprecated and will be removed in
-   Sinatra 1.0. This includes the Sinatra::Test module and
-   Sinatra::TestHarness class in addition to all the framework
+ * The "muren/test" lib is deprecated and will be removed in
+   Müren 1.0. This includes the Müren::Test module and
+   Müren::TestHarness class in addition to all the framework
    test helpers that were deprecated in 0.9.1. The Rack::Test
    lib should be used instead: http://gitrdoc.com/brynary/rack-test
    [#176 / Simon Rozet]
@@ -1528,7 +1528,7 @@ the 1.0 release:
    sass methods is deprecated due to thread-safety issues. You must
    require the template libs explicitly in your app file. [Simon Rozet]
 
- * A new Sinatra::Base#route_missing method was added. route_missing
+ * A new Müren::Base#route_missing method was added. route_missing
    is sent when no route matches the request or all route handlers
    pass.  The default implementation forwards the request to the
    downstream app when running as middleware (i.e., "@app" is
@@ -1536,7 +1536,7 @@ the 1.0 release:
    is defined. Subclasses can override this method to perform custom
    route miss logic. [Jon Crosby]
 
- * A new Sinatra::Base#route_eval method was added. The method
+ * A new Müren::Base#route_eval method was added. The method
    yields to the block and throws :halt with the result. Subclasses
    can override this method to tap into the route execution logic.
    [TJ Holowaychuck]
@@ -1550,7 +1550,7 @@ the 1.0 release:
    [#172 / Pat Nakajima]
 
  * Fix in-file templates when running alongside activesupport and
-   fatal errors when requiring activesupport before sinatra
+   fatal errors when requiring activesupport before muren
    [#178 / Brian Candler]
 
  * Fix various issues running on Google AppEngine.
@@ -1566,7 +1566,7 @@ the 1.0 release:
 
 ## 0.9.1 / 2009-03-01
 
- * Sinatra now runs under Ruby 1.9.1 [#61]
+ * Müren now runs under Ruby 1.9.1 [#61]
 
  * Route patterns (splats, :named, or Regexp captures) are now
    passed as arguments to the block. [#140]
@@ -1583,11 +1583,11 @@ the 1.0 release:
    pass.
 
  * New simple API for extensions/plugins to add DSL-level and
-   request-level methods. Use Sinatra.register(mixin) to extend
+   request-level methods. Use Müren.register(mixin) to extend
    the DSL with all public methods defined in the mixin module;
-   use Sinatra.helpers(mixin) to make all public methods defined
+   use Müren.helpers(mixin) to make all public methods defined
    in the mixin module available at the request level. [#138]
-   See http://www.sinatrarb.com/extensions.html for details.
+   See http://www.murenrb.com/extensions.html for details.
 
  * Named parameters in routes now capture the "." character. This makes
    routes like "/:path/:filename" match against requests like
@@ -1609,12 +1609,12 @@ the 1.0 release:
    ":session" option to any of the mock request methods. e.g.,
        get '/', {}, :session => { 'foo' => 'bar' }
 
- * The testing framework specific files ('sinatra/test/spec',
-   'sinatra/test/bacon', 'sinatra/test/rspec', etc.) have been deprecated.
-   See http://sinatrarb.com/testing.html for instructions on setting up
+ * The testing framework specific files ('muren/test/spec',
+   'muren/test/bacon', 'muren/test/rspec', etc.) have been deprecated.
+   See http://murenrb.com/testing.html for instructions on setting up
    a testing environment with these frameworks.
 
- * The request-level #send_data method from Sinatra 0.3.3 has been added
+ * The request-level #send_data method from Müren 0.3.3 has been added
    for compatibility but is deprecated.
 
  * Fix :provides causing crash on any request when request has no
@@ -1622,7 +1622,7 @@ the 1.0 release:
 
  * Fix that ERB templates were evaluated twice per "erb" call.
 
- * Fix app-level middleware not being run when the Sinatra application is
+ * Fix app-level middleware not being run when the Müren application is
    run as middleware.
 
  * Fixed some issues with running under Rack's CGI handler caused by
@@ -1638,7 +1638,7 @@ the 1.0 release:
 
  * Using halt with more than 1 args causes ArgumentError [#131]
  * using halt in a before filter doesn't modify response [#127]
- * Add deprecated Sinatra::EventContext to unbreak plugins [#130]
+ * Add deprecated Müren::EventContext to unbreak plugins [#130]
  * Give access to GET/POST params in filters [#129]
  * Preserve non-nested params in nested params hash [#117]
  * Fix backtrace dump with Rack::Lint [#116]
@@ -1648,7 +1648,7 @@ the 1.0 release:
  * Fall back on mongrel then webrick when thin not found. [#75]
  * Use :environment instead of :env in test helpers to
    fix deprecation warnings coming from framework.
- * Make sinatra/test/rspec work again [#113]
+ * Make muren/test/rspec work again [#113]
  * Fix app_file detection on windows [#118]
  * Fix static files with Rack::Lint in pipeline [#121]
 
@@ -1661,8 +1661,8 @@ the 1.0 release:
 
  * Works with and requires Rack >= 0.9.1
 
- * Multiple Sinatra applications can now co-exist peacefully within a
-   single process. The new "Sinatra::Base" class can be subclassed to
+ * Multiple Müren applications can now co-exist peacefully within a
+   single process. The new "Müren::Base" class can be subclassed to
    establish a blank-slate Rack application or middleware component.
    Documentation on using these features is forth-coming; the following
    provides the basic gist: http://gist.github.com/38605
@@ -1705,18 +1705,18 @@ the 1.0 release:
    page for a range of status codes: "error(500..599)".
 
  * In-file templates are now automatically imported from the file that
-   requires 'sinatra'. The use_in_file_templates! method is still available
+   requires 'muren'. The use_in_file_templates! method is still available
    for loading templates from other files.
 
- * Sinatra's testing support is no longer dependent on Test::Unit. Requiring
-   'sinatra/test' adds the Sinatra::Test module and Sinatra::TestHarness
-   class, which can be used with any test framework. The 'sinatra/test/unit',
-   'sinatra/test/spec', 'sinatra/test/rspec', or 'sinatra/test/bacon' files
+ * Müren's testing support is no longer dependent on Test::Unit. Requiring
+   'muren/test' adds the Müren::Test module and Müren::TestHarness
+   class, which can be used with any test framework. The 'muren/test/unit',
+   'muren/test/spec', 'muren/test/rspec', or 'muren/test/bacon' files
    can be required to setup a framework-specific testing environment. See the
    README for more information.
 
- * Added support for Bacon (test framework). The 'sinatra/test/bacon' file
-   can be required to setup Sinatra test helpers on Bacon::Context.
+ * Added support for Bacon (test framework). The 'muren/test/bacon' file
+   can be required to setup Müren test helpers on Bacon::Context.
 
  * Deprecated "set_option" and "set_options"; use "set" instead.
 
@@ -1730,13 +1730,13 @@ the 1.0 release:
  * Deprecated the request level "headers" method (HTTP response headers);
    use "response['Header-Name']" instead.
 
- * Deprecated "Sinatra.application"; use "Sinatra::Application" instead.
+ * Deprecated "Müren.application"; use "Müren::Application" instead.
 
- * Deprecated setting Sinatra.application = nil to reset an application.
+ * Deprecated setting Müren.application = nil to reset an application.
    This should no longer be necessary.
 
- * Deprecated "Sinatra.default_options"; use
-   "Sinatra::Default.set(key, value)" instead.
+ * Deprecated "Müren.default_options"; use
+   "Müren::Default.set(key, value)" instead.
 
  * Deprecated the "ServerError" exception. All Exceptions are now
    treated as internal server errors and result in a 500 response
@@ -1747,7 +1747,7 @@ the 1.0 release:
    respectively, instead.
 
  * Removed Event and EventContext classes. Applications are defined in a
-   subclass of Sinatra::Base; each request is processed within an
+   subclass of Müren::Base; each request is processed within an
    instance.
 
 ## 0.3.3 / 2009-01-06
@@ -1756,16 +1756,16 @@ the 1.0 release:
 
  * Log unhandled exception backtraces to rack.errors.
 
- * Use RACK_ENV environment variable to establish Sinatra
+ * Use RACK_ENV environment variable to establish Müren
    environment when given. Thin sets this when started with
    the -e argument.
 
- * BUG: raising Sinatra::NotFound resulted in a 500 response
+ * BUG: raising Müren::NotFound resulted in a 500 response
    code instead of 404.
 
  * BUG: use_in_file_templates! fails with CR/LF [#45]
 
- * BUG: Sinatra detects the app file and root path when run under
+ * BUG: Müren detects the app file and root path when run under
    thin/passenger.
 
 ## 0.3.2
@@ -1774,7 +1774,7 @@ the 1.0 release:
    sending. Updated to stream with 8K chunks instead.
 
  * Rake tasks and assets for building basic documentation website.
-   See http://sinatra.rubyforge.org
+   See http://muren.rubyforge.org
 
  * Various minor doc fixes.
 
@@ -1784,14 +1784,14 @@ the 1.0 release:
 
 ## 0.3.0
 
- * Add sinatra.gemspec w/ support for github gem builds. Forks can now
-   enable the build gem option in github to get free username-sinatra.gem
-   builds: gem install username-sinatra.gem --source=http://gems.github.com/
+ * Add muren.gemspec w/ support for github gem builds. Forks can now
+   enable the build gem option in github to get free username-muren.gem
+   builds: gem install username-muren.gem --source=http://gems.github.com/
 
  * Require rack-0.4 gem; removes frozen rack dir.
 
- * Basic RSpec support; require 'sinatra/test/rspec' instead of
-   'sinatra/test/spec' to use. [avdi]
+ * Basic RSpec support; require 'muren/test/rspec' instead of
+   'muren/test/spec' to use. [avdi]
 
  * before filters can modify request environment vars used for
    routing (e.g., PATH_INFO, REQUEST_METHOD, etc.) for URL rewriting
@@ -1822,7 +1822,7 @@ the 1.0 release:
  * Various grammar and formatting fixes to README; additions on
    community and contributing [cypher]
 
- * Build RDoc using Hanna template: http://sinatrarb.rubyforge.org/api
+ * Build RDoc using Hanna template: http://murenrb.rubyforge.org/api
 
  * Specs, documentation and fixes for splat'n routes [vic]
 

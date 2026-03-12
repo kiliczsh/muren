@@ -26,10 +26,10 @@ class StaticTest < Minitest::Test
     assert_equal File.read(__FILE__), buf1.join
   end
 
-  it 'sets the sinatra.static_file env variable if served' do
+  it 'sets the muren.static_file env variable if served' do
     env = Rack::MockRequest.env_for("/#{File.basename(__FILE__)}")
     @app.call(env)
-    assert_equal File.expand_path(__FILE__), env['sinatra.static_file']
+    assert_equal File.expand_path(__FILE__), env['muren.static_file']
   end
 
   it 'serves HEAD requests for files in the public directory' do

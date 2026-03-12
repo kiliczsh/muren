@@ -2,10 +2,10 @@ require_relative 'test_helper'
 
 class SettingsTest < Minitest::Test
   setup do
-    @base = Sinatra.new(Sinatra::Base)
+    @base = Muren.new(Muren::Base)
     @base.set :environment => :foo, :app_file => nil
 
-    @application = Sinatra.new(Sinatra::Application)
+    @application = Muren.new(Muren::Application)
     @application.set :environment => :foo, :app_file => nil
   end
 
@@ -189,7 +189,7 @@ class SettingsTest < Minitest::Test
 
     it 'may emit content without a content-type (to be sniffed)' do
       @base.set :default_content_type, nil
-      @base.get('/') { raise Sinatra::BadRequest, "This is a drill" }
+      @base.get('/') { raise Muren::BadRequest, "This is a drill" }
       @app = @base
       get '/'
       assert_equal 400, status
@@ -273,7 +273,7 @@ class SettingsTest < Minitest::Test
     end
 
     it 'returns a friendly 500' do
-      klass = Sinatra.new(Sinatra::Application)
+      klass = Muren.new(Muren::Application)
       mock_app(klass) {
         enable :show_exceptions
 
@@ -289,12 +289,12 @@ class SettingsTest < Minitest::Test
     end
 
     it 'does not attempt to show unparsable query parameters' do
-      klass = Sinatra.new(Sinatra::Application)
+      klass = Muren.new(Muren::Application)
       mock_app(klass) {
         enable :show_exceptions
 
         get '/' do
-          raise Sinatra::BadRequest
+          raise Muren::BadRequest
         end
       }
 
@@ -342,7 +342,7 @@ class SettingsTest < Minitest::Test
     end
 
     it 'dumps exception with backtrace to rack.errors' do
-      klass = Sinatra.new(Sinatra::Application)
+      klass = Muren.new(Muren::Application)
 
       mock_app(klass) {
         enable :dump_errors
@@ -365,7 +365,7 @@ class SettingsTest < Minitest::Test
     end
 
     it 'does not dump 404 errors' do
-      klass = Sinatra.new(Sinatra::Application)
+      klass = Muren.new(Muren::Application)
 
       mock_app(klass) {
         enable :dump_errors
@@ -379,7 +379,7 @@ class SettingsTest < Minitest::Test
         end
 
         get '/' do
-          raise Sinatra::NotFound
+          raise Muren::NotFound
         end
       }
 
@@ -452,8 +452,8 @@ class SettingsTest < Minitest::Test
       assert @base.public_method_defined?(:foo)
     end
 
-    it 'is possible to use the keyword public in a sinatra app' do
-      app = Sinatra.new do
+    it 'is possible to use the keyword public in a muren app' do
+      app = Muren.new do
         private
         def priv; end
         public
@@ -502,12 +502,12 @@ class SettingsTest < Minitest::Test
 
   describe 'app_file' do
     it 'is nil for base classes' do
-      assert_nil Sinatra::Base.app_file
-      assert_nil Sinatra::Application.app_file
+      assert_nil Muren::Base.app_file
+      assert_nil Muren::Application.app_file
     end
 
     it 'defaults to the file subclassing' do
-      assert_equal File.expand_path(__FILE__), Sinatra.new.app_file
+      assert_equal File.expand_path(__FILE__), Muren.new.app_file
     end
   end
 
@@ -599,21 +599,21 @@ class SettingsTest < Minitest::Test
 
     it 'sets up Rack::Protection' do
       MiddlewareTracker.track do
-        Sinatra::Base.new
+        Muren::Base.new
         assert_include MiddlewareTracker.used, Rack::Protection
       end
     end
 
     it 'sets up Rack::Protection::PathTraversal' do
       MiddlewareTracker.track do
-        Sinatra::Base.new
+        Muren::Base.new
         assert_include MiddlewareTracker.used, Rack::Protection::PathTraversal
       end
     end
 
     it 'does not set up Rack::Protection::PathTraversal when disabling it' do
       MiddlewareTracker.track do
-        Sinatra.new { set :protection, :except => :path_traversal }.new
+        Muren.new { set :protection, :except => :path_traversal }.new
         assert_include MiddlewareTracker.used, Rack::Protection
         assert !MiddlewareTracker.used.include?(Rack::Protection::PathTraversal)
       end
@@ -621,14 +621,14 @@ class SettingsTest < Minitest::Test
 
     it 'sets up RemoteToken if sessions are enabled' do
       MiddlewareTracker.track do
-        Sinatra.new { enable :sessions }.new
+        Muren.new { enable :sessions }.new
         assert_include MiddlewareTracker.used, Rack::Protection::RemoteToken
       end
     end
 
     it 'sets up RemoteToken if sessions are enabled with a custom session store' do
       MiddlewareTracker.track do
-        Sinatra.new {
+        Muren.new {
           enable :sessions
           set :session_store, Rack::Session::Pool
         }.new
@@ -639,14 +639,14 @@ class SettingsTest < Minitest::Test
 
     it 'does not set up RemoteToken if sessions are disabled' do
       MiddlewareTracker.track do
-        Sinatra.new.new
+        Muren.new.new
         assert !MiddlewareTracker.used.include?(Rack::Protection::RemoteToken)
       end
     end
 
     it 'sets up RemoteToken if it is configured to' do
       MiddlewareTracker.track do
-        Sinatra.new { set :protection, :session => true }.new
+        Muren.new { set :protection, :session => true }.new
         assert_include MiddlewareTracker.used, Rack::Protection::RemoteToken
       end
     end

@@ -3,18 +3,18 @@ require_relative 'test_helper'
 class FooError < RuntimeError
 end
 
-class FooNotFound < Sinatra::NotFound
+class FooNotFound < Muren::NotFound
 end
 
-class FooSpecialError < Sinatra::Error
+class FooSpecialError < Muren::Error
   def http_status; 501 end
 end
 
-class FooStatusOutOfRangeError < Sinatra::Error
+class FooStatusOutOfRangeError < Muren::Error
   def code; 4000 end
 end
 
-class FooWithCode < Sinatra::Error
+class FooWithCode < Muren::Error
   def code; 419 end
 end
 
@@ -85,12 +85,12 @@ class MappedErrorTest < Minitest::Test
       assert_equal 'FooError!', body
     end
 
-    it "sets env['sinatra.error'] to the rescued exception" do
+    it "sets env['muren.error'] to the rescued exception" do
       mock_app do
         set :raise_errors, false
         error(FooError) do
-          assert env.include?('sinatra.error')
-          assert env['sinatra.error'].kind_of?(FooError)
+          assert env.include?('muren.error')
+          assert env['muren.error'].kind_of?(FooError)
           'looks good'
         end
         get('/') { raise FooError }
@@ -117,15 +117,15 @@ class MappedErrorTest < Minitest::Test
       assert_equal 500, status
     end
 
-    it "never raises Sinatra::NotFound beyond the application" do
-      mock_app(Sinatra::Application) do
-        get('/') { raise Sinatra::NotFound }
+    it "never raises Muren::NotFound beyond the application" do
+      mock_app(Muren::Application) do
+        get('/') { raise Muren::NotFound }
       end
       get '/'
       assert_equal 404, status
     end
 
-    it "cascades for subclasses of Sinatra::NotFound" do
+    it "cascades for subclasses of Muren::NotFound" do
       mock_app do
         set :raise_errors, true
         error(FooNotFound) { "foo! not found." }
@@ -145,7 +145,7 @@ class MappedErrorTest < Minitest::Test
     end
 
     it 'inherits error mappings from base class' do
-      base = Class.new(Sinatra::Base)
+      base = Class.new(Muren::Base)
       base.error(FooError) { 'base class' }
 
       mock_app(base) do
@@ -158,7 +158,7 @@ class MappedErrorTest < Minitest::Test
     end
 
     it 'overrides error mappings in base class' do
-      base = Class.new(Sinatra::Base)
+      base = Class.new(Muren::Base)
       base.error(FooError) { 'base class' }
 
       mock_app(base) do

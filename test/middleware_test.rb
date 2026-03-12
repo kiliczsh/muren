@@ -2,7 +2,7 @@ require_relative 'test_helper'
 
 class MiddlewareTest < Minitest::Test
   setup do
-    @app = mock_app(Sinatra::Application) do
+    @app = mock_app(Muren::Application) do
       get('/*')do
         response.headers['X-Tests'] = env['test.ran'].
           map { |n| n.split('::').last }.
@@ -26,7 +26,7 @@ class MiddlewareTest < Minitest::Test
     end
   end
 
-  it "is added with Sinatra::Application.use" do
+  it "is added with Muren::Application.use" do
     @app.use UpcaseMiddleware
     get '/hello-world'
     assert ok?

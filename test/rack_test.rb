@@ -3,8 +3,8 @@ require 'rack'
 
 class RackTest < Minitest::Test
   setup do
-    @foo = Sinatra.new { get('/foo') { 'foo' }}
-    @bar = Sinatra.new { get('/bar') { 'bar' }}
+    @foo = Muren.new { get('/foo') { 'foo' }}
+    @bar = Muren.new { get('/bar') { 'bar' }}
   end
 
   def build(*middleware)

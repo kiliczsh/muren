@@ -3,7 +3,7 @@ require 'erb'
 
 class BaseTest < Minitest::Test
   setup do
-    @base = Sinatra.new(Sinatra::Base)
+    @base = Muren.new(Muren::Base)
     @base.set :views, __dir__ + "/views"
   end
 

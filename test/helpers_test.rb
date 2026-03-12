@@ -288,13 +288,13 @@ class HelpersTest < Minitest::Test
 
     it 'accepts a URI object instead of a String' do
       mock_app do
-        get('/') { redirect URI.parse('http://sinatrarb.com') }
+        get('/') { redirect URI.parse('http://murenrb.com') }
       end
 
       get '/'
       assert_equal 302, status
       assert_equal '', body
-      assert_equal 'http://sinatrarb.com', response['Location']
+      assert_equal 'http://murenrb.com', response['Location']
     end
   end
 
@@ -572,7 +572,7 @@ class HelpersTest < Minitest::Test
   end
 
   describe 'mime_type' do
-    include Sinatra::Helpers
+    include Muren::Helpers
 
     it "looks up mime types in Rack's MIME registry" do
       Rack::Mime::MIME_TYPES['.foo'] = 'application/foo'
@@ -594,7 +594,7 @@ class HelpersTest < Minitest::Test
     end
 
     it 'turns AcceptEntry into String' do
-      type = mime_type(Sinatra::Request::AcceptEntry.new('text/plain'))
+      type = mime_type(Muren::Request::AcceptEntry.new('text/plain'))
       assert_equal String, type.class
       assert_equal 'text/plain', type
     end
@@ -686,7 +686,7 @@ class HelpersTest < Minitest::Test
           assert_equal content_type(:png),    'image/png'
           assert_equal content_type(:baz),    'application/baz;charset=utf-8'
           # Changed to "text/javascript" in Rack >3.0
-          # https://github.com/sinatra/sinatra/pull/1857#issuecomment-1445062212
+          # https://github.com/muren/muren/pull/1857#issuecomment-1445062212
           assert_match %r{^application|text/javascript;charset=utf-8$}, content_type(:js)
           tests_ran = true
           "done"
@@ -762,7 +762,7 @@ class HelpersTest < Minitest::Test
       mock_app do
         get('/attachment') do
           attachment filename
-          response.write("<sinatra></sinatra>")
+          response.write("<muren></muren>")
         end
       end
     end
@@ -771,14 +771,14 @@ class HelpersTest < Minitest::Test
       attachment_app('test.xml')
       get '/attachment'
       assert_equal 'application/xml;charset=utf-8', response['Content-Type']
-      assert_equal '<sinatra></sinatra>', body
+      assert_equal '<muren></muren>', body
     end
 
     it 'sets the Content-Type response header without extname' do
       attachment_app('test')
       get '/attachment'
       assert_equal 'text/html;charset=utf-8', response['Content-Type']
-      assert_equal '<sinatra></sinatra>', body
+      assert_equal '<muren></muren>', body
     end
 
     it 'sets the Content-Type response header with extname' do
@@ -786,26 +786,26 @@ class HelpersTest < Minitest::Test
         get('/attachment') do
           content_type :atom
           attachment 'test.xml'
-          response.write("<sinatra></sinatra>")
+          response.write("<muren></muren>")
         end
       end
 
       get '/attachment'
       assert_equal 'application/atom+xml', response['Content-Type']
-      assert_equal '<sinatra></sinatra>', body
+      assert_equal '<muren></muren>', body
     end
 
     it 'escapes filename in the Content-Disposition header according to the multipart form data spec in WHATWG living standard' do
       mock_app do
         get('/attachment') do
           attachment "test.xml\";\r\next=.txt"
-          response.write("<sinatra></sinatra>")
+          response.write("<muren></muren>")
         end
       end
 
       get '/attachment'
       assert_equal 'attachment; filename="test.xml%22;%0D%0Aext=.txt"', response['Content-Disposition']
-      assert_equal '<sinatra></sinatra>', body
+      assert_equal '<muren></muren>', body
     end
   end
 
@@ -1087,7 +1087,7 @@ class HelpersTest < Minitest::Test
               'Boo!'
             end
           end
-          wrapper = Object.new.extend Sinatra::Helpers
+          wrapper = Object.new.extend Muren::Helpers
           @last_modified_time = wrapper.time_for last_modified_time
         end
 
@@ -1991,7 +1991,7 @@ class HelpersTest < Minitest::Test
     it 'prepends modules so previously-defined methods can be overridden consistently' do
       skip <<-EOS
         This test will be helpful after switching #helpers's code from Module#include to Module#prepend
-        See more details: https://github.com/sinatra/sinatra/pull/1214
+        See more details: https://github.com/muren/muren/pull/1214
       EOS
       mock_app do
         helpers do
@@ -2020,7 +2020,7 @@ class HelpersTest < Minitest::Test
       end
     end
 
-    class HelpersOverloadingIncludeAndOverride < Sinatra::Base
+    class HelpersOverloadingIncludeAndOverride < Muren::Base
       helpers HelpersOverloadingBaseHelper
 
       get '/' do
@@ -2053,7 +2053,7 @@ class HelpersTest < Minitest::Test
       end
     end
 
-    class ServerApp < Sinatra::Base
+    class ServerApp < Muren::Base
       helpers HelperWithIncluded
       # `nickname` method should be available.
     end

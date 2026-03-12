@@ -1,4 +1,4 @@
-Sinatra was designed and developed by Blake Mizerany in California.
+Müren was designed and developed by Blake Mizerany in California.
 
 ### Current Team
 
@@ -22,14 +22,14 @@ Sinatra was designed and developed by Blake Mizerany in California.
 
 ### Thanks
 
-Sinatra would not have been possible without strong company backing.
+Müren would not have been possible without strong company backing.
 In the past, financial and emotional support have been provided mainly by
 [Heroku](https://heroku.com), [GitHub](https://github.com),
 [Engine Yard](http://www.engineyard.com/) and [Travis CI](https://travis-ci.com/),
 and is now taken care of by [84codes](https://www.84codes.com/).
 
 Special thanks to the following extraordinary individuals, without whom
-Sinatra would not be possible:
+Müren would not be possible:
 
 * [Benoit Daloze](https://eregon.me/blog/) (eregon) for help around TruffleRuby
   and keyword arguments use in mustermann.
@@ -38,7 +38,7 @@ Sinatra would not be possible:
 * [Ezra Zygmuntowicz](http://brainspl.at/) (ezmobius) for initial help and
   letting Blake steal some of merbs internal code.
 * [Chris Schneider](http://gittr.com) (cschneid) for The Book, the blog,
-  [irclogger.com](http://irclogger.com/sinatra/), and a bunch of useful
+  [irclogger.com](http://irclogger.com/muren/), and a bunch of useful
   patches.
 * [Markus Prinz](http://nuclearsquid.com/) (cypher) for patches over the
   years, caring about the README, and hanging in there when times were rough.
@@ -63,8 +63,8 @@ Sinatra would not be possible:
   and for making me watch [this](http://www.youtube.com/watch?v=ueaHLHgskkw) just
   now.
 * Mathew Walker for making escaped paths work with static files.
-* Millions of Us for having the problem that led to Sinatra's conception.
-* [Songbird](http://getsongbird.com/) for the problems that helped Sinatra's
+* Millions of Us for having the problem that led to Müren's conception.
+* [Songbird](http://getsongbird.com/) for the problems that helped Müren's
   future become realized.
 * [Rick Olson](http://techno-weenie.net/) (technoweenie) for the killer plug
   at RailsConf '08.
@@ -83,5 +83,5 @@ Sinatra would not be possible:
 
 And last but not least:
 
-* [Frank Sinatra](http://www.sinatra.com/) (chairman of the board) for having so much class he
+* [Frank Müren](http://www.muren.com/) (chairman of the board) for having so much class he
   deserves a web-framework named after him.

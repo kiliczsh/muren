@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-gemspec
+gemspec name: 'muren'
 
 gem 'rake'
 
@@ -31,8 +31,8 @@ gem 'rack-test'
 gem 'rubocop', require: false
 gem 'yard' # used by rake doc
 
+gem 'muren-contrib', path: 'muren-contrib'
 gem 'rack-protection', path: 'rack-protection'
-gem 'sinatra-contrib', path: 'sinatra-contrib'
 
 gem 'asciidoctor'
 gem 'builder'
